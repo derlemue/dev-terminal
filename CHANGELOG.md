@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.2] - 2026-01-13
+### 🐛 [ PATCH // CONFIGURATION ]
+- **[ YAML_FIX ]**: Resolved duplicate `ports` definition in `docker-compose.yml` blocking build.
+
 ## [2.0.1] - 2026-01-13
 ### 🐛 [ PATCH // DOCUMENTATION ]
 - **[ FORMATTING ]**: Corrected markdown rendering for Access Point and SSH Uplink section.
