@@ -57,7 +57,6 @@ Dev-Terminal v2.0.0 provides a production-grade, encrypted pentesting environmen
 - Git Version Control
 
 ### [ EXECUTE_SEQUENCE ]
-### [ EXECUTE_SEQUENCE ]
 ```bash
 # Clone the repository
 git clone https://github.com/derlemue/dev-terminal.git
