@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file.
 
-## [1.0.0] - 2026-01-13
+## [1.0.0-alpha] - 2026-01-13
 ### 🚀 Added
 - **Docker Compose:** Initial `docker-compose.yml` for simplified deployment.
 - **Overlay Injection:** New build strategy to inject custom secure login overlay directly into `ttyd`'s `inline.html`.

@@ -2,16 +2,18 @@
 
 ![Logo](https://raw.githubusercontent.com/derlemue/assets/refs/heads/main/avatars/lemueIO/flyer/lemueIO-flyer-4.png)
 
-# 🔐 Lemue Dev-Terminal
+# 🔐 Lemue Dev-Terminal (v1.0.0-alpha)
 
 ![License](https://img.shields.io/github/license/derlemue/dev-terminal?style=for-the-badge&color=blue)
 ![Docker](https://img.shields.io/badge/docker-ready-blue?style=for-the-badge&logo=docker)
-![Status](https://img.shields.io/badge/status-operational-success?style=for-the-badge)
+![Status](https://img.shields.io/badge/status-alpha-orange?style=for-the-badge)
 ![Security](https://img.shields.io/badge/security-hardened-red?style=for-the-badge&logo=kalilinux)
 
 **High-Performance, Secure Web Token Terminal based on TTYD & Kali Linux**
 
 [Features](#-features) • [Installation](#-installation) • [Usage](#-usage) • [Changelog](#-changelog)
+
+![Terminal Preview](docs/terminal_preview.png)
 
 </div>
 
@@ -38,6 +40,10 @@
 # Clone the repository
 git clone https://github.com/derlemue/dev-terminal.git
 cd dev-terminal
+
+# Create Persistence Image (512MB)
+dd if=/dev/zero of=persistence.img bs=1M count=512
+mkfs.ext4 persistence.img
 
 # Start the container
 sudo docker compose up -d --build
