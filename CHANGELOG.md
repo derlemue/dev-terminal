@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.3-alpha] - 2026-01-13
+### 🚀 [ MATRIX_EVOLUTION // CONSOLIDATED ]
+- ** > [ NEURAL_VISUALS ]**: Opacity calibrated to **80%** with glass-blur reinforced.
+- ** > [ TRUE_TRANSPARENCY ]**: `ttyd` source patched to render fully transparent background, eliminating the black void.
+- ** > [ SSH_UPLINK ]**: Port `22` Exposed for remote shell access.
+- ** > [ DOCUMENTATION ]**: Updated Screenshots and Manual.
+
 ## [1.0.2-alpha] - 2026-01-13
 ### 🚀 [ MATRIX_EVOLUTION // INVISIBLE_CONTAINER ]
 - ** > [ NULL_CONTAINER ]**: Container box rendered invisible (`background: transparent`, `border: none`).

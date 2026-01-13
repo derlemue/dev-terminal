@@ -2,7 +2,7 @@
 
 ![Terminal Preview](docs/terminal_preview.png)
 
-# 🟢 **LEMUE // DEV-TERMINAL** `v1.0.2-alpha`
+# 🟢 **LEMUE // DEV-TERMINAL** `v1.0.3-alpha`
 
 ![License](https://img.shields.io/github/license/derlemue/dev-terminal?style=for-the-badge&labelColor=black&color=00ff41)
 ![Docker](https://img.shields.io/badge/docker-ready-black?style=for-the-badge&logo=docker&logoColor=00ff41)
@@ -12,7 +12,7 @@
 **[ SYSTEM_ROOT_ACCESS // ESTABLISHED ]**
 **[ UPLINK // SECURE_TTY_OVER_HTTPS ]**
 
-[ > INITIATE_SEQUENCE ](#-installation) • [ > VIEW_SPECS ](#-features) • [ > SYSTEM_LOGS ](#-changelog)
+[ > INITIATE_SEQUENCE ](#-deployment_protocol) • [ > VIEW_SPECS ](#-feature_set) • [ > SYSTEM_LOGS ](CHANGELOG.md)
 
 </div>
 
@@ -26,10 +26,11 @@ Lemue Dev-Terminal provides a high-fidelity, WebGL-accelerated neural interface 
 ## 💾 FEATURE_SET
 
 - ** > [ SECURE_UPLINK ]**: Code-locked overlay protection. Passkey: `1337`.
-- ** > [ NEURAL_INTERFACE ]**: 75% Transparency Glassmorphism console. Floating viewport.
+- ** > [ NEURAL_INTERFACE ]**: 80% Transparency Glassmorphism console. Floating viewport. (Updated to 80%)
 - ** > [ KERNEL_CORE ]**: Kali Linux Rolling. Pre-loaded: `git`, `vim`, `tmux`, `zsh`, `htop`, `openssh`.
 - ** > [ PERSISTENCE_DRIVE ]**: 512MB OverlayFS storage mounting `/usr`, `/root`, `/opt`. Tools survive reboot.
 - ** > [ ZERO_LATENCY ]**: WebGL acceleration via Xterm.js.
+- ** > [ SSH_ACCESS ]**: Port 22 exposed.
 
 ## 🔌 DEPLOYMENT_PROTOCOL
 
