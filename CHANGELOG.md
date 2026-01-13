@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.6] - 2026-01-13
+### 📦 [ ASSETS // MEDIA ]
+- **[ VIDEO_FILE ]**: Committed `terminal.mp4` asset to `docs/` for the Video Log player.
+
 ## [2.0.5] - 2026-01-13
 ### 🚀 [ FEATURE // INTELLIGENCE ]
 - **[ VIDEO_FEED ]**: Added HTML5 Video Player for `terminal.mp4` log visualization.
