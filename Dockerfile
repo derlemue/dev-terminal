@@ -11,7 +11,7 @@ RUN apt-get update && apt-get install -y \
     zsh zsh-syntax-highlighting zsh-autosuggestions kali-defaults tmux curl vim procps iproute2 ca-certificates openssh-server \
     nodejs npm htop bashtop \
     cryptsetup sudo nano wget docker.io docker-compose traceroute nmap cmatrix \
-    dnsutils net-tools iputils-ping \
+    dnsutils net-tools iputils-ping e2fsprogs \
     && rm -rf /var/lib/apt/lists/*
 
 # 2. Build ttyd from source (with patch)

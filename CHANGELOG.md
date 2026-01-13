@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.8] - 2026-01-13
+### 🐛 [ PATCH // CRITICAL_FIX ]
+- **[ MISSING_BINARY ]**: Added `e2fsprogs` to provide `mkfs.ext4` for volume formatting.
+- **[ RECOVERY_LOGIC ]**: Added auto-cleanup for stuck LUKS mappings in `entrypoint.sh` to prevent boot loops.
+
 ## [2.0.7] - 2026-01-13
 ### 🐛 [ PATCH // STABILITY ]
 - **[ BUILD_FIX ]**: Fixed `mkdir` error in Dockerfile during SSH setup (`mkdir -p`).

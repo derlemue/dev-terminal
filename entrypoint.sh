@@ -20,19 +20,27 @@ if [ -f "$PERSISTENCE_IMG" ]; then
 
     echo "[INIT] Checking persistence image..."
     
+    # Cleanup: Close mapper if it exists (fix for restart loops)
+    if [ -e "/dev/mapper/$MAPPER_NAME" ]; then
+        echo "[INIT] Mapper $MAPPER_NAME already exists. Closing..."
+        cryptsetup luksClose "$MAPPER_NAME" || true
+    fi
+    
     # Check if LUKS header exists
     if ! cryptsetup isLuks "$PERSISTENCE_IMG"; then
         echo "[INIT] No LUKS header found. Initializing NEW encrypted volume..."
-        # Format as LUKS
         echo -n "$ENCRYPTION_PASS" | cryptsetup luksFormat -q "$PERSISTENCE_IMG" -
-        # Open
-        echo -n "$ENCRYPTION_PASS" | cryptsetup luksOpen "$PERSISTENCE_IMG" "$MAPPER_NAME" -
-        # Format FS
-        echo "[INIT] Checksum verification complete. Formatting ext4..."
+    fi
+
+    echo "[INIT] Opening encrypted volume..."
+    echo -n "$ENCRYPTION_PASS" | cryptsetup luksOpen "$PERSISTENCE_IMG" "$MAPPER_NAME" -
+
+    # Check for valid filesystem
+    if ! blkid "/dev/mapper/$MAPPER_NAME" | grep -q "TYPE=\"ext4\""; then
+        echo "[INIT] No Valid Filesystem found on volume. Formatting ext4..."
         mkfs.ext4 "/dev/mapper/$MAPPER_NAME"
     else
-        echo "[INIT] Opening existing encrypted volume..."
-        echo -n "$ENCRYPTION_PASS" | cryptsetup luksOpen "$PERSISTENCE_IMG" "$MAPPER_NAME" -
+        echo "[INIT] Filesystem verified."
     fi
 
     # Mount
