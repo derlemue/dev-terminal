@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.26] - 2026-01-14
+### 🐛 [ PATCH // CRITICAL_FIX ]
+- **[ GIT_SYNC ]**: Added `docs/info-2.html` to the repository (was previously untracked, causing 404 error).
+
 ## [2.0.25] - 2026-01-14
 ### 🎨 [ PATCH // UI_TWEAK ]
 - **[ MARGINS ]**: Reduced Container size to 80vw/80vh (effectively 10% margin on all sides).
