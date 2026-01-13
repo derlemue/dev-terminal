@@ -26,13 +26,12 @@
 
     /* Target the TTYD container. In app.tsx it is id="terminal-container" */
     #terminal-container {
-        width: 75vw !important;
-        height: 75vh !important;
-        background: rgba(0, 0, 0, 0.70) !important;
+        width: 95vw !important;
+        height: 90vh !important;
+        background: transparent !important;
         backdrop-filter: none !important;
         -webkit-backdrop-filter: none !important;
         border: none !important;
-        border-radius: 8px !important;
         box-shadow: none !important;
         position: relative !important;
         z-index: 1 !important;
@@ -54,9 +53,16 @@
         /* Force hide scrollbar on xterm */
     }
 
+    /* Text Shadow for Readability on Wallpaper */
+    .xterm-rows {
+        text-shadow: 2px 2px 0px #000000, -1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000;
+        font-weight: 600 !important;
+    }
+
     /* Ensure the xterm canvas fits */
     .terminal.xterm {
         height: 100%;
+        width: 100%;
     }
 
     #login-overlay {

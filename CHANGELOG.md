@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.20] - 2026-01-14
+### 🎨 [ PATCH // UI_POLISH ]
+- **[ GLASS_MODE ]**: Removed background container "box". Terminal text now floats directly on the wallpaper.
+- **[ READABILITY ]**: Added heavy text-shadow to ensure visibility against the background.
+- **[ LAYOUT ]**: Increased terminal size to 95vw/90vh and centered it perfectly.
+
 ## [2.0.19] - 2026-01-14
 ### 🔒 [ FEATURE // SECURE_SHUTDOWN ]
 - **[ LOCK_COMMAND ]**: Added `lock` alias (executes `sudo poweroff`) to safely shutdown and re-encrypt the volume.
