@@ -2,17 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
-## [1.0.3-alpha] - 2026-01-13
-### 🚀 [ MATRIX_EVOLUTION // TRUE_TRANSPARENCY ]
-- ** > [ ROOT_ACCESS ]**: Patched `ttyd` source to enable `allowTransparency: true` and `background: transparent`.
-- ** > [ NEURAL_LINK ]**: Achieved true depth perception. Terminal text now floats directly on the matrix construct.
-- ** > [ VISUAL_CLARITY ]**: 75% opacity verified.
-
 ## [1.0.2-alpha] - 2026-01-13
-### 🚀 [ MATRIX_EVOLUTION // ITERATION_75 ]
-- ** > [ NEURAL_INTERFACE ]**: Viewport dimensions adjusted to **75%** scale (75vw / 75vh).
-- ** > [ VISUAL_CLARITY ]**: Opacity calibrated to **75%** (Layer 0.75).
-- ** > [ TERMINAL_CORE ]**: Synced transparency across container and viewport.
+### 🚀 [ MATRIX_EVOLUTION // INVISIBLE_CONTAINER ]
+- ** > [ NULL_CONTAINER ]**: Container box rendered invisible (`background: transparent`, `border: none`).
+- ** > [ PURE_TEXT ]**: Terminal appears to float freely in the Construct.
+- ** > [ DIMENSIONS ]**: Maintained 75% scale.
+- ** > [ VISUAL_CLARITY ]**: 75% opacity verified.
 
 ## [1.0.1-alpha] - 2026-01-13
 ### 🚀 [ SYSTEM_UPGRADE // INITIATED ]
