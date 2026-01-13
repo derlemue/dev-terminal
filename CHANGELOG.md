@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.7] - 2026-01-13
+### 🐛 [ PATCH // STABILITY ]
+- **[ BUILD_FIX ]**: Fixed `mkdir` error in Dockerfile during SSH setup (`mkdir -p`).
+- **[ DOCS_STANDARDIZATION ]**: Renamed `Info.html` to `info.html` for consistent GitHub Pages routing.
+
 ## [2.0.6] - 2026-01-13
 ### 📦 [ ASSETS // MEDIA ]
 - **[ VIDEO_FILE ]**: Committed `terminal.mp4` asset to `docs/` for the Video Log player.

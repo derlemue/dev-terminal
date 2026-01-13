@@ -34,7 +34,7 @@ RUN useradd -m -s /bin/zsh -G sudo,docker lemue \
     && echo "lemue ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 
 # 5. SSH Configuration
-RUN mkdir /var/run/sshd \
+RUN mkdir -p /var/run/sshd \
     && sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config \
     && sed -i 's/#Port 22/Port 2222/' /etc/ssh/sshd_config
 
