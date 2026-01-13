@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.25] - 2026-01-14
+### 🎨 [ PATCH // UI_TWEAK ]
+- **[ MARGINS ]**: Reduced Container size to 80vw/80vh (effectively 10% margin on all sides).
+- **[ PADDING ]**: Increased internal padding to 50px.
+- **[ OPACITY ]**: Reduced background opacity to 50% (`0.5`) for greater transparency.
+
 ## [2.0.24] - 2026-01-14
 ### 🐞 [ PATCH // DOCS_FIX ]
 - **[ README ]**: Fixed missing link for `info-2.html` and removed duplicate header.
