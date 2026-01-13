@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.21] - 2026-01-14
+### 🎨 [ PATCH // UI_FIX ]
+- **[ FULLSCREEN ]**: Forced Terminal to 100vw/100vh with transparency.
+- **[ CSS_OVERRIDE ]**: Added recursive background removal to fix "Black Box" issue.
+- **[ INSTALL_FIX ]**: `setup.sh` now enforces `--no-cache` to ensure UI updates are applied.
+
 ## [2.0.20] - 2026-01-14
 ### 🎨 [ PATCH // UI_POLISH ]
 - **[ GLASS_MODE ]**: Removed background container "box". Terminal text now floats directly on the wallpaper.
