@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.22] - 2026-01-14
+### ✨ [ PATCH // UI_MILESTONE ]
+- **[ GLASSMORPHISM ]**: Implemented "Glass Box" style.
+    - Size: 90% Width / 90% Height.
+    - Background: 80% Opacity Black (`rgba(0,0,0,0.8)`).
+    - Effect: Backdrop Blur (10px).
+    - Border: Thin distinct border + Rounded Corners (16px).
+    - Shadow: Deep box-shadow for "floating" effect.
+
 ## [2.0.21] - 2026-01-14
 ### 🎨 [ PATCH // UI_FIX ]
 - **[ FULLSCREEN ]**: Forced Terminal to 100vw/100vh with transparency.
