@@ -1,0 +1,7 @@
+services:
+  dev-terminal:
+    build: .
+    ports:
+      - "7681:7681"
+    restart: unless-stopped
+    container_name: dev-terminal

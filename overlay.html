@@ -1,0 +1,94 @@
+<style>
+    html,
+    body {
+        background: #0d1117 url('https://raw.githubusercontent.com/derlemue/assets/refs/heads/main/avatars/lemueIO/flyer/lemueIO-flyer-4.png') no-repeat center center fixed !important;
+        background-size: cover !important;
+        font-family: monospace;
+    }
+
+    #terminal-container {
+        /* TTYD might not use this ID, but we keep it just in case we can target the terminal wrapper */
+        /* If ttyd mounts to body, we might need to target .xterm-viewport */
+    }
+
+    /* Override TTYD background if needed */
+    .xterm-viewport,
+    .terminal {
+        background-color: transparent !important;
+    }
+
+    #login-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.6);
+        backdrop-filter: blur(20px);
+        z-index: 9999;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.5s ease;
+    }
+
+    .login-box {
+        text-align: center;
+        color: white;
+    }
+
+    input {
+        background: transparent;
+        border: none;
+        border-bottom: 2px solid #00ff00;
+        color: white;
+        font-size: 1.5rem;
+        text-align: center;
+        padding: 10px;
+        outline: none;
+        letter-spacing: 5px;
+        margin-top: 20px;
+    }
+
+    input::placeholder {
+        color: rgba(255, 255, 255, 0.3);
+        letter-spacing: 1px;
+        font-size: 1rem;
+    }
+
+    .hidden {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+    }
+</style>
+
+<div id="login-overlay">
+    <div class="login-box">
+        <h2 style="letter-spacing: 2px; font-weight: 300;">SECURE LOGIN</h2>
+        <input type="password" id="password" placeholder="ENTER PASSCODE" autofocus>
+    </div>
+</div>
+
+<script>
+    const pass = document.getElementById('password');
+    const overlay = document.getElementById('login-overlay');
+
+    pass.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            if (pass.value === '1337') {
+                overlay.classList.add('hidden');
+                setTimeout(() => window.dispatchEvent(new Event('resize')), 500);
+                setTimeout(() => document.querySelector('.xterm-helper-textarea')?.focus(), 600);
+            } else {
+                pass.value = '';
+                pass.placeholder = 'DENIED';
+                setTimeout(() => pass.placeholder = 'ENTER PASSCODE', 1000);
+            }
+        }
+    });
+
+    // Force focus on load
+    pass.focus();
+</script>
