@@ -9,6 +9,12 @@ services:
     container_name: dev-terminal
     privileged: true
     environment:
-      - TZ=Europe/Amsterdam
+      - TZ=${TZ}
+      - WEB_USER=${WEB_USER}
+      - WEB_PASS=${WEB_PASS}
+      - ENCRYPTION_PASS=${ENCRYPTION_PASS}
+    ports:
+      - "7681:7681"
+      - "2222:2222"
     volumes:
       - ./persistence.img:/persistence.img

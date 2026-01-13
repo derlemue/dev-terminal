@@ -2,17 +2,19 @@
 FROM tsl0922/ttyd:latest AS asset-source
 
 # STAGE 2: Kali Build
-FROM kalilinux/kali-rolling
+FROM kalilinux/kali-rolling:latest
 ENV DEBIAN_FRONTEND=noninteractive
 
-# 1. Install Dependencies
+# 1. Install Dependencies & Tools
 RUN apt-get update && apt-get install -y \
     build-essential cmake git libjson-c-dev libwebsockets-dev zlib1g-dev libssl-dev pkg-config \
-    zsh zsh-syntax-highlighting zsh-autosuggestions kali-defaults tmux curl vim procps iproute2 ca-certificates openssh-client \
-    nodejs npm htop \
+    zsh zsh-syntax-highlighting zsh-autosuggestions kali-defaults tmux curl vim procps iproute2 ca-certificates openssh-server \
+    nodejs npm htop bashtop \
+    cryptsetup sudo nano wget docker.io docker-compose-plugin traceroute nmap cmatrix \
+    dnsutils net-tools iputils-ping \
     && rm -rf /var/lib/apt/lists/*
 
-# 2. Build ttyd from source
+# 2. Build ttyd from source (with patch)
 RUN git clone --branch 1.7.7 --depth 1 https://github.com/tsl0922/ttyd.git /tmp/ttyd \
     && cd /tmp/ttyd/html \
     && sed -i 's/ref={c => (this.container = c as HTMLElement)}/ref={c => { this.container = c as HTMLElement; }}/g' src/components/terminal/index.tsx \
@@ -26,20 +28,27 @@ RUN git clone --branch 1.7.7 --depth 1 https://github.com/tsl0922/ttyd.git /tmp/
 
 # 3. Setup Tools & Shell
 RUN curl -L -o /usr/bin/neofetch "https://raw.githubusercontent.com/dylanaraps/neofetch/master/neofetch" && chmod +x /usr/bin/neofetch
-RUN cp -r /etc/skel/. /root/ && chsh -s /bin/zsh root
 
-WORKDIR /root
+# 4. User Setup (lemue)
+RUN useradd -m -s /bin/zsh -G sudo,docker lemue \
+    && echo "lemue ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 
-# 4. Copy Files
+# 5. SSH Configuration
+RUN mkdir /var/run/sshd \
+    && sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config \
+    && sed -i 's/#Port 22/Port 2222/' /etc/ssh/sshd_config
+
+# 6. Copy Scripts & Assets
 COPY overlay.html /opt/overlay.html
 COPY welcome.sh /usr/local/bin/welcome.sh
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN chmod +x /usr/local/bin/welcome.sh /usr/local/bin/entrypoint.sh
 
-# 5. DER FIX: INLINE JS INJECTION
-# Wir injizieren unser Overlay in das generierte ttyd HTML
+# 7. Inject Overlay (Visuals only, Auth handled by ttyd)
 RUN cat /opt/overlay.html >> /opt/ttyd_index.html
 
-EXPOSE 7681
+WORKDIR /home/lemue
+
+EXPOSE 7681 2222
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
 CMD ["ttyd", "-W", "-I", "/opt/ttyd_index.html", "/usr/local/bin/welcome.sh"]

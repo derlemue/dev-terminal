@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.0] - 2026-01-13
+### 🚀 [ SYSTEM_OVERHAUL // PRODUCTION_READY ]
+- **[ ENCRYPTED_PERSISTENCE ]**: Implemented **LUKS** encryption for the 2GB persistent layer. Data is secured at rest via `cryptsetup`. Keys managed via `.env`.
+- **[ SECURE_AUTHENTICATION ]**: Transitioned from client-side JS checks to server-side **Basic Auth** (`ttyd -c`). Credentials (`WEB_USER`, `WEB_PASS`) managed via `.env`.
+- **[ TOOL_ARSENAL ]**: Pre-installed extensive suite: `nmap`, `docker.io`, `ssh-server`, `cryptsetup`, `tracepath`, `bashtop`, `dnsutils`, `net-tools`, `iproute2`.
+- **[ SYSTEM_USER ]**: Created dedicated user `lemue` with `sudo` and `docker` privileges.
+- **[ SSH_EXPANSION ]**: SSH Daemon running on port `2222` with `PermitRootLogin` enabled for deep system access.
+- **[ NEURAL_TRAINING ]**: Added integration for Quizzes and Flashcards.
+- **[ INTELLIGENCE_LOG ]**: Added Web Player for Audio Logs and Classified Report viewers.
+- **[ STORAGE_UPGRADE ]**: Persistence partition size standardized to **2GB** (2048MB).
+
+## [1.0.6-alpha] - 2026-01-13
+### 🚀 [ VISUAL_TUNING // PURE_TINT ]
+- **[ BORDERLESS ]**: Removed container borders and shadows ("The Box") to achieve a pure floating terminal aesthetic.
+- **[ OPACITY_70 ]**: Maintained 70% background tint for contrast without the visual weight of a container frame.
+
+## [1.0.5-alpha] - 2026-01-13
+### 🚀 [ VISUAL_TUNING // OPACITY_70 ]
+- **[ TRANSLUCENCY ]**: Shell background opacity reduced to **70%** (Layer 0.70) for enhanced background visibility.
+- **[ AESTHETIC ]**: Fine-tuned glass-blur balance.
+
 ## [1.0.4-alpha] - 2026-01-13
 ### 🚀 [ SYSTEM_ADJUSTMENT // TEMPORAL_ALIGNMENT ]
 - **[ TIME_SYNCHRONIZATION ]**: Docker container time zone set to `Europe/Amsterdam`.
