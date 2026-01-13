@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.27] - 2026-01-14
+### 🎨 [ PATCH // UI_TRANSPARENCY ]
+- **[ CANVAS_FIX ]**: Explicitly applied `-t theme={'background':'transparent'}` to `ttyd`.
+    - This forces the Xterm canvas to be transparent, allowing the 50% opacity container to show through.
+    - Previously, the canvas was likely rendering solid black, ignoring the CSS.
+
 ## [2.0.26] - 2026-01-14
 ### 🐛 [ PATCH // CRITICAL_FIX ]
 - **[ GIT_SYNC ]**: Added `docs/info-2.html` to the repository (was previously untracked, causing 404 error).
