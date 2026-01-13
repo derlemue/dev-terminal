@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.3-alpha] - 2026-01-13
+### 🚀 [ MATRIX_EVOLUTION // TRUE_TRANSPARENCY ]
+- ** > [ ROOT_ACCESS ]**: Patched `ttyd` source to enable `allowTransparency: true` and `background: transparent`.
+- ** > [ NEURAL_LINK ]**: Achieved true depth perception. Terminal text now floats directly on the matrix construct.
+- ** > [ VISUAL_CLARITY ]**: 75% opacity verified.
+
 ## [1.0.2-alpha] - 2026-01-13
 ### 🚀 [ MATRIX_EVOLUTION // ITERATION_75 ]
 - ** > [ NEURAL_INTERFACE ]**: Viewport dimensions adjusted to **75%** scale (75vw / 75vh).
