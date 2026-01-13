@@ -1,6 +1,6 @@
 <div align="center">
 
-![Logo](https://raw.githubusercontent.com/derlemue/assets/refs/heads/main/avatars/lemueIO/flyer/lemueIO-flyer-4.png)
+![Terminal Preview](docs/terminal_preview.png)
 
 # 🔐 Lemue Dev-Terminal (v1.0.0-alpha)
 
@@ -12,8 +12,6 @@
 **High-Performance, Secure Web Token Terminal based on TTYD & Kali Linux**
 
 [Features](#-features) • [Installation](#-installation) • [Usage](#-usage) • [Changelog](#-changelog)
-
-![Terminal Preview](docs/terminal_preview.png)
 
 </div>
 
