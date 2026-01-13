@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.23] - 2026-01-14
+### 📄 [ FEATURE // DOCUMENTATION ]
+- **[ INTEL_LINK ]**: Added `docs/info-2.html` (TRON Forensics Report) to README Intelligence Data.
+
 ## [2.0.22] - 2026-01-14
 ### ✨ [ PATCH // UI_MILESTONE ]
 - **[ GLASSMORPHISM ]**: Implemented "Glass Box" style.
