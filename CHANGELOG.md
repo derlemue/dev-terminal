@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.10] - 2026-01-13
+### 📝 [ PATCH // DOCUMENTATION ]
+- **[ FULL_DISCLOSURE ]**: Linked all available report formats (PDF/MD for both DE/EN) in the Intelligence section.
+
 ## [2.0.9] - 2026-01-13
 ### 📦 [ ASSETS // INTELLIGENCE ]
 - **[ REPORT_DATA ]**: Added and linked `report-EN.pdf` and `report-EN.md` to documentation.

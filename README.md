@@ -2,7 +2,7 @@
 
 ![Terminal Preview](docs/terminal_preview.png)
 
-# 🟢 **LEMUE // DEV-TERMINAL** `v2.0.9`
+# 🟢 **LEMUE // DEV-TERMINAL** `v2.0.10`
 
 ![License](https://img.shields.io/github/license/derlemue/dev-terminal?style=for-the-badge&labelColor=black&color=00ff41)
 ![Docker](https://img.shields.io/badge/docker-ready-black?style=for-the-badge&logo=docker&logoColor=00ff41)
@@ -40,9 +40,11 @@ Dev-Terminal v2.0.0 provides a production-grade, encrypted pentesting environmen
 
 
 - **[ VIDEO_LOG ]**: [Watch Terminal Feed](https://derlemue.github.io/dev-terminal/docs/terminal_log.html)
-- **[ REPORT_FILE ]**: [View Classified Report](https://derlemue.github.io/dev-terminal/docs/report.html)
-- **[ REPORT_EN_PDF ]**: [Download Mission Report (PDF)](docs/report-EN.pdf)
-- **[ REPORT_EN_MD ]**: [Read Mission Report (MD)](docs/report-EN.md)
+- **[ REPORT_VIEWER ]**: [View Classified Report (HTML)](https://derlemue.github.io/dev-terminal/docs/report.html)
+- **[ REPORT_DE_PDF ]**: [Download Report (DE) .pdf](docs/report.pdf)
+- **[ REPORT_DE_MD ]**: [Read Report (DE) .md](docs/report.md)
+- **[ REPORT_EN_PDF ]**: [Download Report (EN) .pdf](docs/report-EN.pdf)
+- **[ REPORT_EN_MD ]**: [Read Report (EN) .md](docs/report-EN.md)
 - **[ SYSTEM_INFO ]**: [View Spec Sheet](https://derlemue.github.io/dev-terminal/docs/info.html)
 - **[ FLASHCARDS ]**: [Access Neural Training](https://gemini.google.com/share/32b3c1c475da)
 - **[ QUIZ_MODULE ]**: [Test Competency](https://gemini.google.com/share/8efae68b5354)
