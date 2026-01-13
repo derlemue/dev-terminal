@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.9] - 2026-01-13
+### 📦 [ ASSETS // INTELLIGENCE ]
+- **[ REPORT_DATA ]**: Added and linked `report-EN.pdf` and `report-EN.md` to documentation.
+
 ## [2.0.8] - 2026-01-13
 ### 🐛 [ PATCH // CRITICAL_FIX ]
 - **[ MISSING_BINARY ]**: Added `e2fsprogs` to provide `mkfs.ext4` for volume formatting.
