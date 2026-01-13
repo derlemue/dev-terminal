@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.2-alpha] - 2026-01-13
+### 🚀 [ MATRIX_EVOLUTION // ITERATION_75 ]
+- ** > [ NEURAL_INTERFACE ]**: Viewport dimensions adjusted to **75%** scale (75vw / 75vh).
+- ** > [ VISUAL_CLARITY ]**: Opacity calibrated to **75%** (Layer 0.75).
+- ** > [ TERMINAL_CORE ]**: Synced transparency across container and viewport.
+
 ## [1.0.1-alpha] - 2026-01-13
 ### 🚀 [ SYSTEM_UPGRADE // INITIATED ]
 - ** > [ DOCKER_CORE ]**: Initialized `docker-compose.yml` for rapid deployment sequence.
