@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.18] - 2026-01-14
+### 🐛 [ PATCH // CRITICAL_FIX ]
+- **[ TTYD_CONFIG ]**: Removed malformed `-t enable-sixel` option which caused boot loop.
+- **[ STABILITY ]**: Restored system stability.
+
 ## [2.0.17] - 2026-01-13
 ### 🚀 [ FEATURE // AUTOMATION ]
 - **[ SETUP_SCRIPT ]**: Added `./setup.sh` to automate environment checks, volume creation, and docker launch.
