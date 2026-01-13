@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.1] - 2026-01-13
+### 🐛 [ PATCH // DOCUMENTATION ]
+- **[ FORMATTING ]**: Corrected markdown rendering for Access Point and SSH Uplink section.
+
 ## [2.0.0] - 2026-01-13
 ### 🚀 [ SYSTEM_OVERHAUL // PRODUCTION_READY ]
 - **[ ENCRYPTED_PERSISTENCE ]**: Implemented **LUKS** encryption for the 2GB persistent layer. Data is secured at rest via `cryptsetup`. Keys managed via `.env`.

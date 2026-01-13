@@ -2,7 +2,7 @@
 
 ![Terminal Preview](docs/terminal_preview.png)
 
-# 🟢 **LEMUE // DEV-TERMINAL** `v2.0.0`
+# 🟢 **LEMUE // DEV-TERMINAL** `v2.0.1`
 
 ![License](https://img.shields.io/github/license/derlemue/dev-terminal?style=for-the-badge&labelColor=black&color=00ff41)
 ![Docker](https://img.shields.io/badge/docker-ready-black?style=for-the-badge&logo=docker&logoColor=00ff41)
@@ -68,8 +68,8 @@ dd if=/dev/zero of=persistence.img bs=1M count=2048
 sudo docker compose up -d --build
 ```
 
-** > ACCESS_POINT:** [`http://localhost:7681`](http://localhost:7681)
-** > SSH_UPLINK:** `ssh -p 2222 lemue@localhost`
+- **[ ACCESS_POINT ]**: [`http://localhost:7681`](http://localhost:7681)
+- **[ SSH_UPLINK ]**: `ssh -p 2222 lemue@localhost`
 
 ## <a id="manual"></a> 🕹️ OPERATOR_MANUAL
 
