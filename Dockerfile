@@ -10,7 +10,7 @@ RUN apt-get update && apt-get install -y \
     build-essential cmake git libjson-c-dev libwebsockets-dev zlib1g-dev libssl-dev pkg-config \
     zsh zsh-syntax-highlighting zsh-autosuggestions kali-defaults tmux curl vim procps iproute2 ca-certificates openssh-server \
     nodejs npm htop bashtop \
-    cryptsetup sudo nano wget docker.io docker-compose-plugin traceroute nmap cmatrix \
+    cryptsetup sudo nano wget docker.io docker-compose traceroute nmap cmatrix \
     dnsutils net-tools iputils-ping \
     && rm -rf /var/lib/apt/lists/*
 

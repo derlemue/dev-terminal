@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.3] - 2026-01-13
+### 🐛 [ PATCH // DEPENDENCIES ]
+- **[ PACKAGE_FIX ]**: Replaced `docker-compose-plugin` (missing in repo) with `docker-compose`.
+
 ## [2.0.2] - 2026-01-13
 ### 🐛 [ PATCH // CONFIGURATION ]
 - **[ YAML_FIX ]**: Resolved duplicate `ports` definition in `docker-compose.yml` blocking build.
