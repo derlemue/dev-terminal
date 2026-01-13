@@ -16,6 +16,7 @@ RUN apt-get update && apt-get install -y \
 RUN git clone --branch 1.7.7 --depth 1 https://github.com/tsl0922/ttyd.git /tmp/ttyd \
     && cd /tmp/ttyd/html \
     && sed -i 's/ref={c => (this.container = c as HTMLElement)}/ref={c => { this.container = c as HTMLElement; }}/g' src/components/terminal/index.tsx \
+    && sed -i "s/background: '#2b2b2b'/background: 'transparent'/g" src/components/app.tsx \
     && npm install && npm run build \
     && cp /tmp/ttyd/html/dist/inline.html /opt/ttyd_index.html \
     && cd /tmp/ttyd && mkdir build && cd build \

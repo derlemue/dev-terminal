@@ -2,67 +2,72 @@
 
 ![Terminal Preview](docs/terminal_preview.png)
 
-# 🔐 Lemue Dev-Terminal (v1.0.0-alpha)
+# 🟢 **LEMUE // DEV-TERMINAL** `v1.0.1-alpha`
 
-![License](https://img.shields.io/github/license/derlemue/dev-terminal?style=for-the-badge&color=blue)
-![Docker](https://img.shields.io/badge/docker-ready-blue?style=for-the-badge&logo=docker)
-![Status](https://img.shields.io/badge/status-alpha-orange?style=for-the-badge)
-![Security](https://img.shields.io/badge/security-hardened-red?style=for-the-badge&logo=kalilinux)
+![License](https://img.shields.io/github/license/derlemue/dev-terminal?style=for-the-badge&labelColor=black&color=00ff41)
+![Docker](https://img.shields.io/badge/docker-ready-black?style=for-the-badge&logo=docker&logoColor=00ff41)
+![Status](https://img.shields.io/badge/status-ONLINE-black?style=for-the-badge&color=00ff41)
+![Security](https://img.shields.io/badge/security-HARDENED-black?style=for-the-badge&logo=kalilinux&logoColor=00ff41)
 
-**High-Performance, Secure Web Token Terminal based on TTYD & Kali Linux**
+**[ SYSTEM_ROOT_ACCESS // ESTABLISHED ]**
+**[ UPLINK // SECURE_TTY_OVER_HTTPS ]**
 
-[Features](#-features) • [Installation](#-installation) • [Usage](#-usage) • [Changelog](#-changelog)
+[ > INITIATE_SEQUENCE ](#-installation) • [ > VIEW_SPECS ](#-features) • [ > SYSTEM_LOGS ](#-changelog)
 
 </div>
 
 ---
 
-## 🚀 Overview
-**Lemue Dev-Terminal** is a secure, browser-based terminal solution designed for rapid deployment and accessibility. Built on top of `ttyd` and `Kali Linux Rolling`, it provides a full-featured shell environment accessible from any modern web browser, protected by a custom security overlay.
+## 📟 SYSTEM_OVERVIEW
 
-## ✨ Features
-- **🛡️ Secure Entry:** Custom CSS/JS Overlay requiring a passcode (`1337`) to access the terminal.
-- **⚡ High Performance:** WebGL-accelerated terminal rendering via Xterm.js.
-- **🔧 Kali Rolling:** Full Kali Linux ecosystem pre-installed (git, vim, tmux, zsh).
-- **🐳 Dockerized:** One-click deployment with Docker Compose.
-- **🎨 Custom UI:** Beautiful, responsive interface with custom background and glassmorphism effects.
+**The Construct is ready.**
+Lemue Dev-Terminal provides a high-fidelity, WebGL-accelerated neural interface (tty) directly into a Kali Linux kernel. Housed within a Docker containment unit, it features a glass-paneled, transparent overlay aesthetic, delivering a pure cyberpunk root shell experience.
 
-## 📦 Installation
+## 💾 FEATURE_SET
 
-### Prerequisites
-- Docker & Docker Compose
-- Git
+- ** > [ SECURE_UPLINK ]**: Code-locked overlay protection. Passkey: `1337`.
+- ** > [ NEURAL_INTERFACE ]**: 75% Transparency Glassmorphism console. Floating viewport.
+- ** > [ KERNEL_CORE ]**: Kali Linux Rolling. Pre-loaded: `git`, `vim`, `tmux`, `zsh`, `htop`, `openssh`.
+- ** > [ PERSISTENCE_DRIVE ]**: 512MB OverlayFS storage mounting `/usr`, `/root`, `/opt`. Tools survive reboot.
+- ** > [ ZERO_LATENCY ]**: WebGL acceleration via Xterm.js.
 
-### Quick Start
+## 🔌 DEPLOYMENT_PROTOCOL
+
+### [ PREREQUISITES ]
+- Docker Algorithm
+- Git Version Control
+
+### [ EXECUTE_SEQUENCE ]
 ```bash
 # Clone the repository
 git clone https://github.com/derlemue/dev-terminal.git
 cd dev-terminal
 
-# Create Persistence Image (512MB)
+# Generate Persistence Core (512MB)
 dd if=/dev/zero of=persistence.img bs=1M count=512
 mkfs.ext4 persistence.img
 
-# Start the container
+# Initialize Construct
 sudo docker compose up -d --build
 ```
-Access the terminal at `http://localhost:7681`.
 
-## 🛠️ Usage
-1. Open your browser and navigate to `http://localhost:7681`.
-2. Enter the passkey: `1337`
-3. Enjoy your root shell.
+** > ACCESS_POINT:** [`http://localhost:7681`](http://localhost:7681)
 
-## 🏗️ Architecture
-The project uses a multi-stage Docker build to:
-1. Compile `ttyd` (v1.7.7-patched) from source directly.
-2. Inject a custom HTML overlay into `ttyd`'s bundled assets.
-3. Deploy on a lightweight Kali Linux base image.
+## 🕹️ OPERATOR_MANUAL
 
-## 🤝 Contributing
-Contributions are welcome! Please feel free to submit a Pull Request.
+1. Jack in to `http://localhost:7681`.
+2. Authenticate: `1337`.
+3. You are **ROOT**.
+
+## 🏗️ SYSTEM_ARCHITECTURE
+
+The matrix is built on three layers:
+1.  **Source Code:** `ttyd` (v1.7.7-patched) compiled from raw source with custom transparency injection.
+2.  **Visual Layer:** HTML/CSS Injection for "Matrix" glassmorphism.
+3.  **Base Reality:** Kali Linux Rolling.
 
 ---
 <div align="center">
-Made with ❤️ by <a href="https://github.com/derlemue">Lemue</a>
+[ END_OF_LINE ]<br>
+Crafted by <a href="https://github.com/derlemue">Lemue</a>
 </div>

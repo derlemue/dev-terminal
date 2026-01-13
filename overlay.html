@@ -28,17 +28,21 @@
     #terminal-container {
         width: 80vw !important;
         height: 80vh !important;
-        background: rgba(0, 0, 0, 0.75) !important;
+        background: rgba(0, 0, 0, 0.60) !important;
         backdrop-filter: blur(10px) !important;
         -webkit-backdrop-filter: blur(10px) !important;
         border: 1px solid rgba(255, 255, 255, 0.15) !important;
         border-radius: 8px !important;
-        padding: 15px !important;
         box-shadow: 0 0 50px rgba(0, 0, 0, 0.5) !important;
         position: relative !important;
         z-index: 1 !important;
         overflow: hidden !important;
         /* Ensure it behaves as a flex item or block */
+        padding: 0 !important;
+        /* Remove padding to let flex center perfectly */
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
     }
 
     /* TTYD specific overrides to ensure transparency */
