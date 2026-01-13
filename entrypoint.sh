@@ -93,4 +93,4 @@ if [ -n "$WEB_USER" ] && [ -n "$WEB_PASS" ]; then
     AUTH_ARGS="-c $WEB_USER:$WEB_PASS"
 fi
 
-exec ttyd $AUTH_ARGS -W -I /opt/ttyd_index.html /usr/local/bin/welcome.sh
+exec ttyd $AUTH_ARGS -P 30 -W -t enable-sixel -I /opt/ttyd_index.html su - lemue -c "/usr/local/bin/welcome.sh"

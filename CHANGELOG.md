@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.15] - 2026-01-13
+### 🐛 [ PATCH // MOBILE_STABILITY ]
+- **[ KEEPALIVE ]**: Added `-P 30` (Ping Interval) to `ttyd` to prevent Mobile Safari from killing the connection.
+- **[ USER_CONTEXT ]**: Enforced `su - lemue` context switch for Web Terminal (previously reverted/failed).
+
 ## [2.0.14] - 2026-01-13
 ### 🔒 [ PATCH // SECURITY ]
 - **[ USER_DEFAULT ]**: Web Terminal now auto-logs in as `lemue` (instead of root). Root access via `sudo`.
