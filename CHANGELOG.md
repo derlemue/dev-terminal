@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.24] - 2026-01-14
+### 🐞 [ PATCH // DOCS_FIX ]
+- **[ README ]**: Fixed missing link for `info-2.html` and removed duplicate header.
+
 ## [2.0.23] - 2026-01-14
 ### 📄 [ FEATURE // DOCUMENTATION ]
 - **[ INTEL_LINK ]**: Added `docs/info-2.html` (TRON Forensics Report) to README Intelligence Data.

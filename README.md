@@ -2,7 +2,7 @@
 
 ![Terminal Preview](docs/terminal_preview.png)
 
-# 🟢 **LEMUE // DEV-TERMINAL** `v2.0.23`
+# 🟢 **LEMUE // DEV-TERMINAL** `v2.0.24`
 
 ![License](https://img.shields.io/github/license/derlemue/dev-terminal?style=for-the-badge&labelColor=black&color=00ff41)
 ![Docker](https://img.shields.io/badge/docker-ready-black?style=for-the-badge&logo=docker&logoColor=00ff41)
@@ -47,6 +47,7 @@ Dev-Terminal v2.0.0 provides a production-grade, encrypted pentesting environmen
 - **[ REPORT_EN_PDF ]**: [Download Report (EN) .pdf](docs/report-EN.pdf)
 - **[ REPORT_EN_MD ]**: [Read Report (EN) .md](docs/report-EN.md)
 - **[ SYSTEM_INFO ]**: [View Spec Sheet](https://derlemue.github.io/dev-terminal/docs/info.html)
+- **[ TRON_FORENSICS ]**: [View Analysis (Detailed)](https://derlemue.github.io/dev-terminal/docs/info-2.html)
 - **[ FLASHCARDS ]**: [Access Neural Training](https://gemini.google.com/share/32b3c1c475da)
 - **[ QUIZ_MODULE ]**: [Test Competency](https://gemini.google.com/share/8efae68b5354)
 
