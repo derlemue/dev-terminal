@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.4-alpha] - 2026-01-13
+### 🚀 [ SYSTEM_ADJUSTMENT // TEMPORAL_ALIGNMENT ]
+- **[ TIME_SYNCHRONIZATION ]**: Docker container time zone set to `Europe/Amsterdam`.
+- **[ ENVIRONMENT ]**: `TZ` variable injected via `docker-compose.yml`.
+
 ## [1.0.3-alpha] - 2026-01-13
 ### 🚀 [ MATRIX_EVOLUTION // CONSOLIDATED ]
 - **[ NEURAL_VISUALS ]**: Opacity calibrated to **80%** with glass-blur reinforced.
