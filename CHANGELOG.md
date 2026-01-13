@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.5] - 2026-01-13
+### 🚀 [ FEATURE // INTELLIGENCE ]
+- **[ VIDEO_FEED ]**: Added HTML5 Video Player for `terminal.mp4` log visualization.
+
 ## [2.0.4] - 2026-01-13
 ### 🐛 [ PATCH // DOCS ]
 - **[ REMOVAL ]**: Temporarily removed Audio Log link (asset pending).

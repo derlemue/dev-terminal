@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terminal Log - Video Feed</title>
+    <style>
+        body {
+            background-color: #0d0d0d;
+            color: #00ff41;
+            font-family: 'Courier New', Courier, monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            flex-direction: column;
+        }
+
+        .video-container {
+            border: 1px solid #00ff41;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 255, 65, 0.2);
+            text-align: center;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+            max-width: 90vw;
+        }
+
+        h1 {
+            margin-top: 0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        video {
+            width: 100%;
+            max-width: 800px;
+            border-radius: 4px;
+            outline: none;
+        }
+
+        .status {
+            margin-top: 1rem;
+            font-size: 0.8rem;
+            opacity: 0.7;
+        }
+
+        a {
+            color: #00ff41;
+            text-decoration: none;
+            border-bottom: 1px dashed #00ff41;
+            margin-top: 1rem;
+            display: inline-block;
+        }
+
+        a:hover {
+            background: #00ff41;
+            color: #000;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="video-container">
+        <h1>[ ENCRYPTED_VIDEO_FEED ]</h1>
+        <video controls autoplay loop muted>
+            <source src="terminal.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="status">> SIGNAL_STRENGTH: 100%</div>
+        <br>
+        <a href="../README.md">[ RETURN_TO_ROOT ]</a>
+    </div>
+</body>
+
+</html>
