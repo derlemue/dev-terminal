@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.19] - 2026-01-14
+### 🔒 [ FEATURE // SECURE_SHUTDOWN ]
+- **[ LOCK_COMMAND ]**: Added `lock` alias (executes `sudo poweroff`) to safely shutdown and re-encrypt the volume.
+- **[ RESTART_POLICY ]**: Changed to `restart: no`. "Exit" now means "Stay Down" (Secure).
+
 ## [2.0.18] - 2026-01-14
 ### 🐛 [ PATCH // CRITICAL_FIX ]
 - **[ TTYD_CONFIG ]**: Removed malformed `-t enable-sixel` option which caused boot loop.

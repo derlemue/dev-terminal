@@ -3,7 +3,7 @@ services:
     build: .
     hostname: dev-terminal
 
-    restart: unless-stopped
+    restart: no
     container_name: dev-terminal
     privileged: true
     environment:
