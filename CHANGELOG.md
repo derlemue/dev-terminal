@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.28] - 2026-01-14
+### 💿 [ UPDATE // STORAGE_EXPANSION ]
+- **[ PERSISTENCE ]**: Increased default volume size from 2GB to 4GB.
+    - Setup now deletes old `persistence.img` if explicitly requested (manual intervention required to trigger new 4GB creation for existing users).
+
 ## [2.0.27] - 2026-01-14
 ### 🎨 [ PATCH // UI_TRANSPARENCY ]
 - **[ CANVAS_FIX ]**: Explicitly applied `-t theme={'background':'transparent'}` to `ttyd`.

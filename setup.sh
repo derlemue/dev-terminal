@@ -9,7 +9,7 @@ echo "██║  ██║█████╗  ██║   ██║_____   █�
 echo "██║  ██║██╔══╝  ╚██╗ ██╔╝_____|  ██║   ██╔══╝  ██╔══██╗██║╚██╔╝██║██║██║╚██╗██║██╔══██║██║     "
 echo "██████╔╝███████╗ ╚████╔╝         ██║   ███████╗██║  ██║██║ ╚═╝ ██║██║██║ ╚████║██║  ██║███████╗"
 echo "╚═════╝ ╚══════╝  ╚═══╝          ╚═╝   ╚══════╝╚═╝  ╚═╝╚═╝     ╚═╝╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝╚══════╝"
-echo "                                                              System Init v2.0.27"
+echo "                                                              System Init v2.0.28"
 echo ""
 
 # 1. Check for .env
@@ -29,9 +29,9 @@ if [ ! -f persistence.img ]; then
         sudo rm -rf persistence.img
     fi
     
-    echo "[SETUP] Generating 2GB Encrypted Volume (persistence.img)..."
+    echo "[SETUP] Generating 4GB Encrypted Volume (persistence.img)..."
     echo "        Depending on your disk speed, this may take a moment."
-    dd if=/dev/zero of=persistence.img bs=1M count=2048 status=progress
+    dd if=/dev/zero of=persistence.img bs=1M count=4096 status=progress
     echo "[DONE]  Volume created successfully."
 else
     echo "[CHECK] Persistence volume found."
