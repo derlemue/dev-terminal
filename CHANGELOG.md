@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.12] - 2026-01-13
+### 🐛 [ PATCH // STABILITY ]
+- **[ BOOT_LOOP_FIX ]**: Forced blind `luksClose` in `entrypoint.sh` to handle stale kernel mappings correctly when `/dev/mapper` is desynchronized.
+
 ## [2.0.11] - 2026-01-13
 ### 🚀 [ FEATURE // INTELLIGENCE ]
 - **[ INTERACTIVE_REPORTS ]**: Deployed new Interactive HTML Reports (Dashboard Style) for both German (`report.html`) and English (`report-EN.html`).

@@ -20,11 +20,9 @@ if [ -f "$PERSISTENCE_IMG" ]; then
 
     echo "[INIT] Checking persistence image..."
     
-    # Cleanup: Close mapper if it exists (fix for restart loops)
-    if [ -e "/dev/mapper/$MAPPER_NAME" ]; then
-        echo "[INIT] Mapper $MAPPER_NAME already exists. Closing..."
-        cryptsetup luksClose "$MAPPER_NAME" || true
-    fi
+    # Cleanup: Force close any existing mapper (fix for restart loops)
+    echo "[INIT] Ensuring clean state for $MAPPER_NAME..."
+    cryptsetup luksClose "$MAPPER_NAME" 2>/dev/null || true
     
     # Check if LUKS header exists
     if ! cryptsetup isLuks "$PERSISTENCE_IMG"; then
