@@ -1,7 +1,11 @@
 services:
   dev-terminal:
     build: .
+    hostname: dev-terminal
     ports:
       - "7681:7681"
     restart: unless-stopped
     container_name: dev-terminal
+    privileged: true
+    volumes:
+      - ./persistence.img:/persistence.img

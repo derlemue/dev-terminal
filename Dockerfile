@@ -31,11 +31,13 @@ WORKDIR /root
 # 4. Copy Files
 COPY overlay.html /opt/overlay.html
 COPY welcome.sh /usr/local/bin/welcome.sh
-RUN chmod +x /usr/local/bin/welcome.sh
+COPY entrypoint.sh /usr/local/bin/entrypoint.sh
+RUN chmod +x /usr/local/bin/welcome.sh /usr/local/bin/entrypoint.sh
 
 # 5. DER FIX: INLINE JS INJECTION
 # Wir injizieren unser Overlay in das generierte ttyd HTML
 RUN cat /opt/overlay.html >> /opt/ttyd_index.html
 
 EXPOSE 7681
+ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
 CMD ["ttyd", "-W", "-I", "/opt/ttyd_index.html", "/usr/local/bin/welcome.sh"]
