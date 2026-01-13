@@ -31,7 +31,9 @@ RUN curl -L -o /usr/bin/neofetch "https://raw.githubusercontent.com/dylanaraps/n
 
 # 4. User Setup (lemue)
 RUN useradd -m -s /bin/zsh -G sudo,docker lemue \
-    && echo "lemue ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
+    && echo "lemue ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers \
+    && echo 'lemue:lemue' | chpasswd \
+    && chage -d 0 lemue
 
 # 5. SSH Configuration
 RUN mkdir -p /var/run/sshd \

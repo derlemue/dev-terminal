@@ -2,7 +2,7 @@
 
 ![Terminal Preview](docs/terminal_preview.png)
 
-# 🟢 **LEMUE // DEV-TERMINAL** `v2.0.15`
+# 🟢 **LEMUE // DEV-TERMINAL** `v2.0.17`
 
 ![License](https://img.shields.io/github/license/derlemue/dev-terminal?style=for-the-badge&labelColor=black&color=00ff41)
 ![Docker](https://img.shields.io/badge/docker-ready-black?style=for-the-badge&logo=docker&logoColor=00ff41)
@@ -57,21 +57,14 @@ Dev-Terminal v2.0.0 provides a production-grade, encrypted pentesting environmen
 - Git Version Control
 
 ### [ EXECUTE_SEQUENCE ]
+### [ EXECUTE_SEQUENCE ]
 ```bash
 # Clone the repository
 git clone https://github.com/derlemue/dev-terminal.git
 cd dev-terminal
 
-# Configure Environment (Secure Credentials)
-cp .env.example .env
-nano .env  # Set your WEB_USER, WEB_PASS, ENCRYPTION_PASS
-
-# Generate Persistence Core (2GB)
-dd if=/dev/zero of=persistence.img bs=1M count=2048
-# Note: Formatting is handled automatically by entrypoint on first run (LUKS).
-
-# Initialize Construct
-sudo docker compose up -d --build
+# Run Auto-Installer (Generates Volume & Config)
+./setup.sh
 ```
 
 - **[ ACCESS_POINT ]**: [`http://localhost:7681`](http://localhost:7681)

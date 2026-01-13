@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.17] - 2026-01-13
+### 🚀 [ FEATURE // AUTOMATION ]
+- **[ SETUP_SCRIPT ]**: Added `./setup.sh` to automate environment checks, volume creation, and docker launch.
+- **[ DOCKERFILE ]**: Applied SSH password setting (`lemue:lemue`) and forced expiry (`chage -d 0`) for real.
+
+## [2.0.16] - 2026-01-13
+### 🔒 [ PATCH // SECURITY_HARDENING ]
+- **[ ENFORCED_RESET ]**: Forced password change on first login (Web & SSH).
+- **[ USER_CONFIG ]**: Verified `lemue` permissions: Passwordless Sudo + Docker access confirmed.
+
 ## [2.0.15] - 2026-01-13
 ### 🐛 [ PATCH // MOBILE_STABILITY ]
 - **[ KEEPALIVE ]**: Added `-P 30` (Ping Interval) to `ttyd` to prevent Mobile Safari from killing the connection.
