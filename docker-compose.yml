@@ -4,6 +4,7 @@ services:
     hostname: dev-terminal
     ports:
       - "7681:7681"
+      - "2222:22"
     restart: unless-stopped
     container_name: dev-terminal
     privileged: true
