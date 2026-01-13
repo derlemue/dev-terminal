@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.31] - 2026-01-14
+### 🎨 [ PATCH // UI_ALIGNMENT ]
+- **[ CENTERING ]**: Applied `position: absolute` with transform centering to `#terminal-container`.
+    - This fixes the issue where the terminal was stuck at the top-left of the screen.
+- **[ LAYOUT ]**: Maintained 80vw/80vh size and layer separation (Transparent Container, 70% Opacity Terminal).
+
 ## [2.0.30] - 2026-01-14
 ### 🎨 [ PATCH // LAYER_SEPARATION ]
 - **[ CONTAINER ]**: Made the outer request container (`#terminal-container`) 100% transparent with minimal padding.
