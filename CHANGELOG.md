@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.11] - 2026-01-13
+### 🚀 [ FEATURE // INTELLIGENCE ]
+- **[ INTERACTIVE_REPORTS ]**: Deployed new Interactive HTML Reports (Dashboard Style) for both German (`report.html`) and English (`report-EN.html`).
+
 ## [2.0.10] - 2026-01-13
 ### 📝 [ PATCH // DOCUMENTATION ]
 - **[ FULL_DISCLOSURE ]**: Linked all available report formats (PDF/MD for both DE/EN) in the Intelligence section.

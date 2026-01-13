@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TRON (1982): A Digital Forensic Report</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
+    <!-- Chosen Palette: Neon Cyber (Vibrant Blues & Magentas - "Brilliant Blues" category) -->
+    <!-- Palette Hex Codes: BG #0f172a, Card #1e293b, Text #f8fafc, Accent1 #22d3ee (Cyan), Accent2 #e879f9 (Fuchsia), Accent3 #f472b6 (Pink) -->
+    
+    <!-- Application Structure Plan:
+         1. Header: Title and "System Status" hook.
+         2. Executive Summary: High-level text overview.
+         3. Section 1 (Hardware): Logarithmic Bar Chart comparing 1982 hardware to 2024.
+         4. Section 2 (The Villain): Radar Chart analyzing MCP traits vs Modern Tech Monopolies.
+         5. Section 3 (Realism Unit Tests): Horizontal Bar Chart scoring technical concepts (Fiction vs Realism).
+         6. Section 4 (Legacy Stack): Line Chart showing cultural relevance over time.
+         7. Footer: Credits and System EOF.
+         
+         Narrative Flow: Starts with the physical machine (Genesis), moves to the software/villain (Archetype), tests the code (Realism), and finishes with the output (Cultural Impact).
+    -->
+
+    <!-- Visualization & Content Choices:
+         1. Hardware Context -> Goal: Compare -> Logarithmic Bar Chart (Chart.js) -> Chosen because the difference between Cray-1 and RTX 4090 is exponential.
+         2. MCP Profiler -> Goal: Relationships/Compare -> Radar Chart (Chart.js) -> Best for showing multiple personality traits/metrics simultaneously.
+         3. Reality Debugger -> Goal: Rank/Compare -> Horizontal Bar Chart (Chart.js) -> Clear visual ranking of "Truth Scores".
+         4. Cultural Impact -> Goal: Change over Time -> Line Chart (Chart.js) -> Shows the dip and rise of the franchise's relevance.
+         
+         CONFIRMATION: NO SVG graphics used. NO Mermaid JS used.
+    -->
+    
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0f172a; /* Slate 900 */
+            color: #f8fafc; /* Slate 50 */
+        }
+        .font-mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+        .neon-text {
+            text-shadow: 0 0 10px rgba(34, 211, 238, 0.5);
+        }
+        .card {
+            background-color: #1e293b; /* Slate 800 */
+            border: 1px solid #334155;
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+        }
+        /* Chart Container Styling - MANDATORY */
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 100%; /* Adapts to grid column */
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 400px;
+            }
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+
+    <!-- Header Section -->
+    <header class="w-full bg-[#020617] border-b border-cyan-500/30 p-8 sticky top-0 z-50 backdrop-blur-md bg-opacity-90">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center">
+            <div>
+                <h1 class="text-4xl md:text-5xl font-bold tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-fuchsia-400 neon-text font-mono mb-2">
+                    TRON: SYSTEM_FORENSICS
+                </h1>
+                <p class="text-slate-400 text-sm font-mono tracking-widest">
+                    FILE_ID: 1982-MCP-ANALYSIS // ACCESS_LEVEL: ROOT
+                </p>
+            </div>
+            <div class="mt-4 md:mt-0 flex items-center space-x-4">
+                <div class="flex flex-col items-end">
+                    <span class="text-xs text-cyan-400 font-mono">SYSTEM_STATUS</span>
+                    <span class="text-emerald-400 font-bold font-mono">ONLINE</span>
+                </div>
+                <div class="w-3 h-3 bg-emerald-500 rounded-full animate-pulse shadow-[0_0_10px_#10b981]"></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Grid Layout -->
+    <main class="max-w-7xl mx-auto p-6 grid grid-cols-1 md:grid-cols-12 gap-8 my-8">
+
+        <!-- Introduction / Hook -->
+        <div class="col-span-1 md:col-span-12 card p-8 border-l-4 border-cyan-400">
+            <h2 class="text-2xl font-bold text-white mb-4 font-mono">> INITIALIZING_SEQUENCE...</h2>
+            <p class="text-slate-300 leading-relaxed text-lg">
+                TRON (1982) is not merely a Disney movie; it is a historical artifact of computer culture. For the modern developer, it serves as a prophecy of the <strong>Open Source vs. Proprietary</strong> war. This report analyzes the technical genesis, the archetypal "Master Control Program," and the film's enduring legacy through a forensic data lens.
+            </p>
+            <div class="mt-6 flex flex-wrap gap-4">
+                <div class="bg-slate-900 px-4 py-2 rounded border border-cyan-500/20 text-cyan-400 font-mono text-sm">
+                    TARGET: IT_VETERANS
+                </div>
+                <div class="bg-slate-900 px-4 py-2 rounded border border-fuchsia-500/20 text-fuchsia-400 font-mono text-sm">
+                    RENDER_ENGINE: CRAY-1
+                </div>
+                <div class="bg-slate-900 px-4 py-2 rounded border border-emerald-500/20 text-emerald-400 font-mono text-sm">
+                    ETHIC: HACKER_CULTURE
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 1: Genesis (Hardware) -->
+        <div class="col-span-1 md:col-span-12 lg:col-span-6 card p-6 flex flex-col">
+            <div class="mb-4">
+                <h3 class="text-xl font-bold text-cyan-400 flex items-center mb-2">
+                    <span class="text-2xl mr-2">01</span> HARDWARE_EVOLUTION
+                </h3>
+                <p class="text-slate-400 text-sm">
+                    The film was rendered on the legendary Cray-1 supercomputer. To understand the magnitude of this achievement, we must compare the raw floating-point performance (FLOPS) of 1982 against modern consumer hardware. Note the logarithmic scale required to visualize this massive leap.
+                </p>
+            </div>
+            <div class="flex-grow flex items-center justify-center bg-slate-900/50 rounded-lg p-4">
+                <div class="chart-container">
+                    <canvas id="chartHardware"></canvas>
+                </div>
+            </div>
+            <div class="mt-4 p-3 bg-slate-900 rounded border-l-2 border-fuchsia-400">
+                <p class="text-xs text-slate-300 font-mono">
+                    > FACT: The Cray-1 had only 8MB of Main Memory. The "Grid" light cycles were not CGI, but actually backlit analog animation.
+                </p>
+            </div>
+        </div>
+
+        <!-- Section 2: MCP Analysis (Radar) -->
+        <div class="col-span-1 md:col-span-12 lg:col-span-6 card p-6 flex flex-col">
+            <div class="mb-4">
+                <h3 class="text-xl font-bold text-fuchsia-400 flex items-center mb-2">
+                    <span class="text-2xl mr-2">02</span> THREAT_MODEL: THE_MCP
+                </h3>
+                <p class="text-slate-400 text-sm">
+                    The Master Control Program (MCP) was a metaphor for the IBM dominance of the era. Today, it represents the "Walled Garden" ecosystem. This radar chart compares the MCP's behavioral traits against modern Tech Monopolies.
+                </p>
+            </div>
+            <div class="flex-grow flex items-center justify-center bg-slate-900/50 rounded-lg p-4">
+                <div class="chart-container">
+                    <canvas id="chartMCP"></canvas>
+                </div>
+            </div>
+            <div class="mt-4 p-3 bg-slate-900 rounded border-l-2 border-cyan-400">
+                <p class="text-xs text-slate-300 font-mono">
+                    > QUOTE: "I'm running things now, Sark. Try to look a little more amused." - MCP
+                </p>
+            </div>
+        </div>
+
+        <!-- Section 3: Technical Realism (Horizontal Bar) -->
+        <div class="col-span-1 md:col-span-12 card p-6">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <div class="lg:col-span-1">
+                    <h3 class="text-xl font-bold text-emerald-400 flex items-center mb-4">
+                        <span class="text-2xl mr-2">03</span> REALISM_UNIT_TESTS
+                    </h3>
+                    <p class="text-slate-400 text-sm mb-4">
+                        Does the film hold up to technical scrutiny? We ran a "Unit Test" on key concepts in the movie to separate Hollywood magic from legitimate Computer Science concepts.
+                    </p>
+                    <ul class="space-y-4 font-mono text-xs">
+                        <li class="flex items-center text-slate-300">
+                            <span class="w-2 h-2 bg-emerald-500 rounded-full mr-2"></span>
+                            <span>PASS: Concepts grounded in reality</span>
+                        </li>
+                        <li class="flex items-center text-slate-300">
+                            <span class="w-2 h-2 bg-red-500 rounded-full mr-2"></span>
+                            <span>FAIL: Pure Hollywood fiction</span>
+                        </li>
+                    </ul>
+                    <div class="mt-6 p-4 bg-slate-900 rounded border border-slate-700">
+                        <h4 class="text-cyan-400 font-bold mb-2">EASTER EGG:</h4>
+                        <p class="text-xs text-slate-400">
+                            The command "End of Line" spoken by the MCP refers to the ASCII control characters <span class="text-white">CR/LF</span> used to terminate a line of text in teleprinter systems.
+                        </p>
+                    </div>
+                </div>
+                <div class="lg:col-span-2 flex items-center justify-center bg-slate-900/50 rounded-lg p-4">
+                    <div class="chart-container">
+                        <canvas id="chartRealism"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 4: Cultural Impact (Line Chart) -->
+        <div class="col-span-1 md:col-span-12 card p-6">
+            <div class="mb-4">
+                <h3 class="text-xl font-bold text-amber-400 flex items-center mb-2">
+                    <span class="text-2xl mr-2">04</span> CULTURAL_STACK_TRACE
+                </h3>
+                <p class="text-slate-400 text-sm">
+                    Initially a box office disappointment, TRON's influence grew quietly in the underground Demoscene and Hacker circles before exploding into mainstream nostalgia. The "Glowing Grid" aesthetic became the default visual language for "Cyberspace."
+                </p>
+            </div>
+            <div class="flex items-center justify-center bg-slate-900/50 rounded-lg p-4">
+                <div class="chart-container">
+                    <canvas id="chartLegacy"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 5: The Philosophy Kernel (Textual Cards) -->
+        <div class="col-span-1 md:col-span-12">
+            <h3 class="text-xl font-bold text-white mb-6 font-mono text-center">
+                > KERNEL_PANIC: CONFLICTING_IDEOLOGIES
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- User Ideology -->
+                <div class="bg-gradient-to-br from-slate-800 to-slate-900 border border-cyan-500/30 p-6 rounded-lg shadow-lg relative overflow-hidden group hover:border-cyan-400 transition-colors duration-300">
+                    <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                        <span class="text-6xl text-cyan-500 font-mono">USER</span>
+                    </div>
+                    <h4 class="text-xl font-bold text-cyan-400 mb-2 font-mono">THE USER (Alan/Flynn)</h4>
+                    <p class="text-xs font-mono text-slate-500 mb-4">TYPE: CREATOR // GOAL: FREEDOM</p>
+                    <p class="text-slate-300 text-sm leading-relaxed">
+                        Represents the <strong>Hacker Ethic</strong>. Belief that information should be free and systems should be transparent. Users are "gods" who imbue programs with purpose. Analogous to the Open Source movement.
+                    </p>
+                </div>
+
+                <!-- Program Ideology -->
+                <div class="bg-gradient-to-br from-slate-800 to-slate-900 border border-red-500/30 p-6 rounded-lg shadow-lg relative overflow-hidden group hover:border-red-400 transition-colors duration-300">
+                    <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                        <span class="text-6xl text-red-500 font-mono">MCP</span>
+                    </div>
+                    <h4 class="text-xl font-bold text-red-400 mb-2 font-mono">THE PROGRAM (MCP/Sark)</h4>
+                    <p class="text-xs font-mono text-slate-500 mb-4">TYPE: SYSTEM // GOAL: ORDER</p>
+                    <p class="text-slate-300 text-sm leading-relaxed">
+                        Represents <strong>Corporate Control</strong>. Belief that efficiency requires absolute restriction. Users are obsolete flaws in the system. Analogous to DRM, Proprietary Software, and Vendor Lock-in.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="max-w-7xl mx-auto p-8 border-t border-slate-800 text-center">
+        <p class="text-slate-500 text-xs font-mono mb-2">GENERATED_BY: CANVAS_AI_MODULE // END_OF_LINE</p>
+        <div class="flex justify-center space-x-4">
+            <span class="w-2 h-2 bg-slate-700 rounded-full"></span>
+            <span class="w-2 h-2 bg-slate-700 rounded-full"></span>
+            <span class="w-2 h-2 bg-slate-700 rounded-full"></span>
+        </div>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // --- Helper Function for Label Wrapping ---
+        function wrapLabel(str, maxChars) {
+            const words = str.split(' ');
+            const lines = [];
+            let currentLine = words[0];
+
+            for (let i = 1; i < words.length; i++) {
+                if ((currentLine + " " + words[i]).length <= maxChars) {
+                    currentLine += " " + words[i];
+                } else {
+                    lines.push(currentLine);
+                    currentLine = words[i];
+                }
+            }
+            lines.push(currentLine);
+            return lines.length > 1 ? lines : lines[0]; // Return string if 1 line, array if multiple
+        }
+
+        // --- Common Chart Options ---
+        Chart.defaults.color = '#94a3b8'; // Slate 400
+        Chart.defaults.font.family = "'Inter', sans-serif";
+        const tooltipPlugin = {
+            tooltip: {
+                backgroundColor: 'rgba(15, 23, 42, 0.9)',
+                borderColor: '#334155',
+                borderWidth: 1,
+                titleColor: '#f8fafc',
+                bodyColor: '#cbd5e1',
+                padding: 12,
+                callbacks: {
+                    title: function(tooltipItems) {
+                        const item = tooltipItems[0];
+                        let label = item.chart.data.labels[item.dataIndex];
+                        if (Array.isArray(label)) {
+                            return label.join(' ');
+                        } else {
+                            return label;
+                        }
+                    }
+                }
+            }
+        };
+
+        // --- Chart 1: Hardware Evolution (Log Bar) ---
+        const ctxHardware = document.getElementById('chartHardware').getContext('2d');
+        new Chart(ctxHardware, {
+            type: 'bar',
+            data: {
+                labels: [
+                    wrapLabel("Cray-1 Supercomputer (1976)", 16),
+                    wrapLabel("iPhone 15 Pro (2023)", 16),
+                    wrapLabel("NVIDIA RTX 4090 (2024)", 16)
+                ],
+                datasets: [{
+                    label: 'Processing Power (FLOPS)',
+                    data: [160000000, 2000000000000, 83000000000000], // 160M, 2T, 83T
+                    backgroundColor: [
+                        'rgba(232, 121, 249, 0.7)', // Fuchsia
+                        'rgba(34, 211, 238, 0.7)',  // Cyan
+                        'rgba(52, 211, 153, 0.7)'   // Emerald
+                    ],
+                    borderColor: [
+                        '#e879f9',
+                        '#22d3ee',
+                        '#34d399'
+                    ],
+                    borderWidth: 1,
+                    borderRadius: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        type: 'logarithmic',
+                        grid: { color: '#334155' },
+                        title: { display: true, text: 'FLOPS (Logarithmic Scale)' }
+                    },
+                    x: {
+                        grid: { display: false }
+                    }
+                },
+                plugins: {
+                    ...tooltipPlugin,
+                    legend: { display: false }
+                }
+            }
+        });
+
+        // --- Chart 2: MCP Radar ---
+        const ctxMCP = document.getElementById('chartMCP').getContext('2d');
+        new Chart(ctxMCP, {
+            type: 'radar',
+            data: {
+                labels: ['Surveillance', 'Monopoly', 'User Lock-in', 'Efficiency', 'Innovation'],
+                datasets: [{
+                    label: 'MCP (1982)',
+                    data: [95, 100, 100, 90, 20],
+                    backgroundColor: 'rgba(239, 68, 68, 0.2)', // Red
+                    borderColor: '#ef4444',
+                    pointBackgroundColor: '#ef4444',
+                    borderWidth: 2
+                }, {
+                    label: 'Modern Big Tech',
+                    data: [90, 85, 80, 95, 90],
+                    backgroundColor: 'rgba(34, 211, 238, 0.2)', // Cyan
+                    borderColor: '#22d3ee',
+                    pointBackgroundColor: '#22d3ee',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    r: {
+                        angleLines: { color: '#475569' },
+                        grid: { color: '#334155' },
+                        pointLabels: {
+                            font: { size: 12, family: "'JetBrains Mono', monospace" },
+                            color: '#94a3b8'
+                        },
+                        suggestedMin: 0,
+                        suggestedMax: 100
+                    }
+                },
+                plugins: tooltipPlugin
+            }
+        });
+
+        // --- Chart 3: Realism Unit Tests (Horizontal Bar) ---
+        const ctxRealism = document.getElementById('chartRealism').getContext('2d');
+        new Chart(ctxRealism, {
+            type: 'bar',
+            indexAxis: 'y',
+            data: {
+                labels: [
+                    wrapLabel("I/O Towers & Ports", 16),
+                    wrapLabel("Identity Discs (RAM)", 16),
+                    wrapLabel("Master Control Program", 16),
+                    wrapLabel("Solar Sailer Simulation", 16),
+                    wrapLabel("Digitization of Matter", 16)
+                ],
+                datasets: [{
+                    label: 'Scientific Validity Score (0-100)',
+                    data: [95, 85, 90, 40, 5],
+                    backgroundColor: (context) => {
+                        const value = context.raw;
+                        if (value >= 80) return 'rgba(52, 211, 153, 0.8)'; // Green/Pass
+                        if (value >= 40) return 'rgba(251, 191, 36, 0.8)'; // Amber/Warn
+                        return 'rgba(239, 68, 68, 0.8)'; // Red/Fail
+                    },
+                    borderRadius: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        grid: { color: '#334155' },
+                        max: 100
+                    },
+                    y: {
+                        grid: { display: false }
+                    }
+                },
+                plugins: {
+                    ...tooltipPlugin,
+                    legend: { display: false }
+                }
+            }
+        });
+
+        // --- Chart 4: Legacy Stack (Line) ---
+        const ctxLegacy = document.getElementById('chartLegacy').getContext('2d');
+        new Chart(ctxLegacy, {
+            type: 'line',
+            data: {
+                labels: ['1982', '1990', '1995', '2000', '2010', '2020', '2024'],
+                datasets: [{
+                    label: 'Cultural Relevance Index',
+                    data: [45, 65, 55, 60, 95, 85, 98], // 1982(Flop), 1990(Cult), 2010(Sequel), 2024(AI topic)
+                    borderColor: '#f59e0b', // Amber
+                    backgroundColor: 'rgba(245, 158, 11, 0.1)',
+                    borderWidth: 3,
+                    tension: 0.4,
+                    fill: true,
+                    pointRadius: 4,
+                    pointHoverRadius: 6
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: { display: false },
+                    x: { grid: { color: '#334155' } }
+                },
+                plugins: {
+                    ...tooltipPlugin,
+                    legend: { display: false },
+                    tooltip: {
+                        callbacks: {
+                            afterBody: function(context) {
+                                const year = context[0].label;
+                                if(year === '1982') return "Box Office Disappointment";
+                                if(year === '1990') return "Cult Status via VHS";
+                                if(year === '2010') return "TRON: Legacy Release";
+                                if(year === '2024') return "High Relevance (AI Ethics)";
+                                return "";
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

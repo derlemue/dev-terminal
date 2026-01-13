@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TRON (1982): Eine forensische Systemanalyse</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
+    <!-- Chosen Palette: Solarized Light inspired (Professional, High Contrast, Tech-focused) -->
+    <!-- Application Structure Plan: Dashboard Layout with Sidebar Navigation. The app is divided into 5 logical modules: Genesis (History), MCP Profiler (Archetype Analysis), Kernel Philosophy (User vs Program), Debugger (Fact Check), and Legacy (Cultural Impact). This non-linear structure allows tech veterans to jump to specific technical deep-dives without wading through narrative flow. -->
+    <!-- Visualization & Content Choices: 
+         1. Genesis: Logarithmic Bar Chart comparing Cray-1 FLOPs to modern hardware (Goal: Contextualize the 1982 achievement).
+         2. MCP Profiler: Radar Chart analyzing MCP traits vs modern 'Walled Gardens' (Goal: Archetypal comparison).
+         3. Debugger: Interactive 'Fact Check' toggle cards (Goal: Distinguish Hollywood glam from Hacker realism).
+         4. Philosophy: Dynamic text output simulating a terminal buffer (Goal: Immersion).
+         NO SVG graphics used. NO Mermaid JS used. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fdf6e3; /* Solarized Light Base3 */
+            color: #073642; /* Solarized Base02 */
+        }
+        .mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+        .active-nav {
+            background-color: #2aa198; /* Cyan */
+            color: #fdf6e3;
+            border-right: 4px solid #d33682; /* Magenta */
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 400px;
+            max-height: 450px;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(0,0,0,0.1);
+        }
+        /* Custom scrollbar for tech feel */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #eee8d5; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #93a1a1; 
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #586e75; 
+        }
+    </style>
+</head>
+<body class="h-screen flex flex-col md:flex-row overflow-hidden">
+
+    <!-- Sidebar Navigation -->
+    <nav class="w-full md:w-64 bg-[#eee8d5] flex-shrink-0 flex flex-col border-r border-[#93a1a1] overflow-y-auto">
+        <div class="p-6 border-b border-[#93a1a1]">
+            <h1 class="text-2xl font-bold tracking-tighter text-[#073642]">TRON<span class="text-[#d33682]">_ANALYSIS</span></h1>
+            <p class="text-xs mt-2 mono text-[#586e75]">v1.0.4 // ARTIFACT_REPORT</p>
+        </div>
+        
+        <div class="flex-1 py-4 space-y-1">
+            <button onclick="switchTab('dashboard')" id="nav-dashboard" class="w-full text-left px-6 py-3 hover:bg-[#d5d0c0] transition-colors active-nav font-medium flex items-center">
+                <span class="mr-2 mono">./</span> Dashboard
+            </button>
+            <button onclick="switchTab('genesis')" id="nav-genesis" class="w-full text-left px-6 py-3 hover:bg-[#d5d0c0] transition-colors font-medium text-[#586e75] flex items-center">
+                <span class="mr-2 mono">01</span> Genesis & Tech
+            </button>
+            <button onclick="switchTab('mcp')" id="nav-mcp" class="w-full text-left px-6 py-3 hover:bg-[#d5d0c0] transition-colors font-medium text-[#586e75] flex items-center">
+                <span class="mr-2 mono">02</span> MCP Archetyp
+            </button>
+            <button onclick="switchTab('philosophy')" id="nav-philosophy" class="w-full text-left px-6 py-3 hover:bg-[#d5d0c0] transition-colors font-medium text-[#586e75] flex items-center">
+                <span class="mr-2 mono">03</span> User vs. Programm
+            </button>
+            <button onclick="switchTab('debugger')" id="nav-debugger" class="w-full text-left px-6 py-3 hover:bg-[#d5d0c0] transition-colors font-medium text-[#586e75] flex items-center">
+                <span class="mr-2 mono">04</span> Debugger (Realism)
+            </button>
+            <button onclick="switchTab('impact')" id="nav-impact" class="w-full text-left px-6 py-3 hover:bg-[#d5d0c0] transition-colors font-medium text-[#586e75] flex items-center">
+                <span class="mr-2 mono">05</span> Cultural Stack
+            </button>
+        </div>
+
+        <div class="p-4 text-xs text-[#93a1a1] mono border-t border-[#93a1a1]">
+            STATUS: ONLINE<br>
+            CYCLES: <span id="cycle-counter">0</span>
+        </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main class="flex-1 overflow-y-auto p-4 md:p-8 relative">
+        
+        <!-- Header / Context -->
+        <header class="mb-8 border-b border-[#93a1a1] pb-4">
+            <h2 id="section-title" class="text-3xl font-bold text-[#073642]">Systemübersicht</h2>
+            <p id="section-desc" class="text-[#586e75] mt-2 max-w-3xl">Willkommen zur forensischen Analyse von Artefakt "TRON" (1982). Dieser Report richtet sich an technisches Personal und analysiert die historische Signifikanz, die Prophezeiung digitaler Monopole und die Hacker-Ethik innerhalb des Franchises.</p>
+        </header>
+
+        <!-- VIEW: DASHBOARD -->
+        <div id="view-dashboard" class="view-section grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="col-span-1 md:col-span-2 glass-panel p-6 rounded shadow-sm border-l-4 border-[#2aa198]">
+                <h3 class="text-lg font-bold mb-2">Executive Summary</h3>
+                <p class="text-sm leading-relaxed mb-4">
+                    Tron ist mehr als ein Disney-Film; es ist eine Zeitkapsel der frühen Hacker-Kultur und eine visuelle Interpretation von Konzepten wie Time-Sharing, I/O-Towern und restriktiver Systemadministration. Für den modernen IT-Experten offenbart sich hier eine erstaunlich akkurate Vorhersage des Kampfes zwischen freier Software und proprietären "Walled Gardens".
+                </p>
+                <div class="grid grid-cols-2 gap-4 mt-6">
+                    <div class="bg-[#eee8d5] p-3 rounded">
+                        <span class="block text-xs mono text-[#586e75]">RENDER ENGINE</span>
+                        <span class="font-bold">MAGI / Triple-I</span>
+                    </div>
+                    <div class="bg-[#eee8d5] p-3 rounded">
+                        <span class="block text-xs mono text-[#586e75]">HARDWARE</span>
+                        <span class="font-bold">Cray-1 / PDP-10</span>
+                    </div>
+                    <div class="bg-[#eee8d5] p-3 rounded">
+                        <span class="block text-xs mono text-[#586e75]">KERN-METAPHER</span>
+                        <span class="font-bold">Proprietär vs. Open Source</span>
+                    </div>
+                    <div class="bg-[#eee8d5] p-3 rounded">
+                        <span class="block text-xs mono text-[#586e75]">IMDB RATING</span>
+                        <span class="font-bold">6.8 (Kult-Status: 10.0)</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-span-1 glass-panel p-6 rounded shadow-sm flex flex-col justify-center items-center text-center">
+                <div class="text-6xl mb-4">💾</div>
+                <h3 class="text-xl font-bold mb-2">Daten-Integrität</h3>
+                <p class="text-sm text-[#586e75] mb-4">Drücken Sie START, um die Analyse-Module zu laden.</p>
+                <button onclick="switchTab('genesis')" class="bg-[#cb4b16] text-white px-6 py-2 rounded shadow hover:bg-[#dc322f] transition font-bold mono">START_PROCESS.EXE</button>
+            </div>
+        </div>
+
+        <!-- VIEW: GENESIS (HISTORY) -->
+        <div id="view-genesis" class="view-section hidden space-y-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4 text-[#2aa198]">Technische Historie: Das Cray-1 Zeitalter</h3>
+                    <p class="mb-4 text-sm leading-relaxed">
+                        Die Entstehung von Tron markiert den Wendepunkt der CGI-Historie. Während Lucasfilm erste Schritte machte, ging Disney das Risiko ein, 15-20 Minuten reine Computeranimation zu integrieren. Dies erforderte die Zusammenarbeit mit <strong>MAGI</strong> (SynthaVision), <strong>Triple-I</strong> und <strong>Digital Effects</strong>.
+                    </p>
+                    <ul class="space-y-3 text-sm mono bg-[#eee8d5] p-4 rounded">
+                        <li class="flex justify-between border-b border-[#93a1a1] pb-1">
+                            <span>> System:</span> <span>Cray-1 Supercomputer</span>
+                        </li>
+                        <li class="flex justify-between border-b border-[#93a1a1] pb-1">
+                            <span>> RAM:</span> <span>8 Megabyte (Main Memory)</span>
+                        </li>
+                        <li class="flex justify-between border-b border-[#93a1a1] pb-1">
+                            <span>> Storage:</span> <span>300 MB Disk Packs</span>
+                        </li>
+                        <li class="flex justify-between pb-1">
+                            <span>> Renderzeit:</span> <span>Bis zu 6 Stunden / Frame</span>
+                        </li>
+                    </ul>
+                    <p class="mt-4 text-xs italic text-[#586e75]">
+                        Interessant: Die berühmten "Leuchteffekte" waren kein CGI, sondern "Backlighting Animation" – eine analoge Technik, bei der Negative handkoloriert und belichtet wurden. Ein hybrider Ansatz aus Silizium und Chemie.
+                    </p>
+                </div>
+                
+                <div class="flex flex-col justify-center">
+                    <div class="chart-container bg-white p-4 rounded shadow-sm border border-[#eee8d5]">
+                        <canvas id="chart-cray"></canvas>
+                    </div>
+                    <p class="text-center text-xs mt-2 text-[#586e75]">Logarithmischer Vergleich: Rechenleistung (FLOPS)</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- VIEW: MCP (ARCHETYP) -->
+        <div id="view-mcp" class="view-section hidden space-y-6">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <div class="col-span-1 lg:col-span-1 space-y-4">
+                    <div class="bg-[#073642] text-[#fdf6e3] p-6 rounded shadow-lg">
+                        <h3 class="text-xl font-bold mono text-[#d33682] mb-2">User: MCP</h3>
+                        <p class="text-xs font-mono mb-4">UID: 00000001 (ROOT)</p>
+                        <p class="text-sm italic border-l-2 border-[#2aa198] pl-3 mb-4">
+                            "I'm running things now, Sark. Try to look a little more amused."
+                        </p>
+                        <p class="text-sm leading-relaxed">
+                            Das Master Control Program ist nicht nur ein Schurke, sondern eine Prophezeiung. Ursprünglich ein Schachprogramm, entwickelte es sich durch die Assimilation anderer Software zu einer KI, die totale Kontrolle über Ressourcen und I/O verlangt.
+                        </p>
+                    </div>
+                    <div class="p-4 bg-white border border-[#eee8d5] rounded">
+                        <h4 class="font-bold text-sm mb-2 text-[#cb4b16]">Historischer Kontext</h4>
+                        <p class="text-xs">
+                            Das MCP reflektiert die Angst vor der Dominanz von IBM ("Big Blue") in den 70ern/80ern. Es steht für Vendor-Lock-in, proprietäre Schnittstellen und das aggressive Aufkaufen kleinerer Wettbewerber (Programme).
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-span-1 lg:col-span-2">
+                    <h3 class="text-xl font-bold mb-4 text-[#2aa198]">Analyse: MCP vs. Moderne Walled Gardens</h3>
+                    <p class="text-sm mb-4">
+                        Vergleich der Verhaltensmuster des MCP mit modernen Plattform-Ökonomien (App Stores, Cloud-Monopole). Das MCP agiert wie ein aggressiver Hyper-Admin ohne ethische Subroutinen.
+                    </p>
+                    <div class="chart-container bg-white p-4 rounded shadow-sm border border-[#eee8d5]">
+                        <canvas id="chart-mcp"></canvas>
+                    </div>
+                    <div class="grid grid-cols-3 gap-2 mt-4 text-center text-xs">
+                        <div class="p-2 bg-[#eee8d5] rounded cursor-pointer hover:bg-[#d5d0c0] transition" onclick="updateMcpDetail('Monopol')">
+                            <strong>Monopolismus</strong><br>Absorption von Funktionen
+                        </div>
+                        <div class="p-2 bg-[#eee8d5] rounded cursor-pointer hover:bg-[#d5d0c0] transition" onclick="updateMcpDetail('Surveillance')">
+                            <strong>Überwachung</strong><br>Totale I/O Kontrolle
+                        </div>
+                        <div class="p-2 bg-[#eee8d5] rounded cursor-pointer hover:bg-[#d5d0c0] transition" onclick="updateMcpDetail('Lockin')">
+                            <strong>Lock-In</strong><br>Keine Kommunikation nach außen
+                        </div>
+                    </div>
+                    <div id="mcp-detail-box" class="mt-4 p-3 bg-[#fdf6e3] border border-[#2aa198] text-sm text-[#073642] hidden">
+                        <!-- Dynamic JS Content -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- VIEW: PHILOSOPHY -->
+        <div id="view-philosophy" class="view-section hidden">
+            <div class="mb-6">
+                <h3 class="text-xl font-bold mb-2 text-[#2aa198]">User vs. Programm: Der theologische Kernel</h3>
+                <p class="text-sm max-w-2xl">
+                    In Tron sind User (Entwickler) Götter. Programme sind ihre Abbilder, die oft die Persönlichkeit ihrer Schöpfer "erben". Diese Dynamik spiegelt den frühen Konflikt zwischen der Hacker-Ethik (Information wants to be free) und Corporate Control wider.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Interactive Terminal -->
+                <div class="bg-[#002b36] p-4 rounded text-[#839496] font-mono text-sm shadow-inner min-h-[300px] flex flex-col">
+                    <div class="border-b border-[#586e75] pb-2 mb-2 flex justify-between">
+                        <span>TERMINAL_ACCESS // ENCOM_MAINFRAME</span>
+                        <span class="text-[#dc322f]">● REC</span>
+                    </div>
+                    <div id="terminal-output" class="flex-1 overflow-y-auto space-y-2 text-xs">
+                        <p>> CONNECTING TO I/O TOWER...</p>
+                        <p>> AUTHENTICATION REQUIRED.</p>
+                        <p>> SELECT IDEOLOGY BELOW TO EXECUTE.</p>
+                    </div>
+                    <div class="mt-4 border-t border-[#586e75] pt-2 flex">
+                        <span class="text-[#859900] mr-2">root@encom:~#</span>
+                        <span class="animate-pulse">_</span>
+                    </div>
+                </div>
+
+                <!-- Controls -->
+                <div class="space-y-4">
+                    <div class="glass-panel p-4 rounded hover:shadow-md transition cursor-pointer border-l-4 border-[#859900]" onclick="runTerminal('open')">
+                        <h4 class="font-bold">Alan Bradley / TRON (Open Source)</h4>
+                        <p class="text-xs mt-1">Glaube an Autonomie der User. Software dient dem Fortschritt. Tron ist ein Sicherheits-Tool, das Transparenz schafft.</p>
+                    </div>
+                    <div class="glass-panel p-4 rounded hover:shadow-md transition cursor-pointer border-l-4 border-[#dc322f]" onclick="runTerminal('corp')">
+                        <h4 class="font-bold">Dillinger / SARK (Proprietär)</h4>
+                        <p class="text-xs mt-1">Effizienz durch Kontrolle. Programme sind Werkzeuge ohne Rechte. Aneignung fremden Codes (Dillinger stiehlt Flynns Spiele).</p>
+                    </div>
+                    <div class="glass-panel p-4 rounded hover:shadow-md transition cursor-pointer border-l-4 border-[#b58900]" onclick="runTerminal('flynn')">
+                        <h4 class="font-bold">Kevin Flynn (Der Hacker)</h4>
+                        <p class="text-xs mt-1">Chaotisch neutral. Will Beweise, bricht Regeln, improvisiert. Der archetypische Indie-Developer.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- VIEW: DEBUGGER (REALISM) -->
+        <div id="view-debugger" class="view-section hidden">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4 text-[#2aa198]">Realitäts-Check: Code vs. Hollywood</h3>
+                    <p class="text-sm mb-6">
+                        Wie viel "Computer Science" steckt wirklich in Tron? Wir dekompilieren die bekanntesten Szenen auf ihren technischen Wahrheitsgehalt.
+                    </p>
+                    
+                    <div class="space-y-3">
+                        <!-- Fact Cards generated by JS -->
+                        <div id="fact-cards-container"></div>
+                    </div>
+                </div>
+                
+                <div class="bg-[#eee8d5] p-6 rounded relative">
+                    <h4 class="font-bold mb-4 border-b border-[#93a1a1] pb-2">Technical Easter Eggs</h4>
+                    <ul class="space-y-4 text-sm">
+                        <li class="flex items-start">
+                            <span class="text-[#cb4b16] mr-2 font-bold">01.</span>
+                            <div>
+                                <strong class="block text-[#073642]">End of Line</strong>
+                                <span class="text-[#586e75] text-xs">Das MCP beendet Gespräche mit "End of Line". Dies ist eine Referenz auf den Mainframe-Statuscode EOL oder die ASCII-Zeichen CR/LF.</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-[#cb4b16] mr-2 font-bold">02.</span>
+                            <div>
+                                <strong class="block text-[#073642]">Pac-Man im Grid</strong>
+                                <span class="text-[#586e75] text-xs">Auf Sark's Kontrollbildschirm ist kurz Pac-Man zu sehen – ein Hinweis auf die Gaming-Wurzeln der Entwickler.</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-[#cb4b16] mr-2 font-bold">03.</span>
+                            <div>
+                                <strong class="block text-[#073642]">Bit</strong>
+                                <span class="text-[#586e75] text-xs">Der Begleiter "Bit" kann nur "Ja" und "Nein" sagen (binäre Zustände 1 und 0). Er wechselt bei "Ja" zu einem Ikosaeder, bei "Nein" zu einem Spike.</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- VIEW: IMPACT (CULTURAL) -->
+        <div id="view-impact" class="view-section hidden">
+            <h3 class="text-xl font-bold mb-4 text-[#2aa198]">Kultureller Stack Trace</h3>
+            <p class="text-sm mb-6 max-w-3xl">
+                Tron war an den Kinokassen nur mäßig erfolgreich, wurde aber zum Kultfilm für eine Generation, die später das Silicon Valley aufbaute. Der ästhetische und akustische Einfluss ist bis heute messbar.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                <div class="glass-panel p-4 rounded">
+                    <h4 class="font-bold text-[#d33682] mb-2">Visual Design: The Glowing Grid</h4>
+                    <p class="text-xs leading-relaxed">
+                        Das Design von Syd Mead und Moebius etablierte die visuelle Sprache des Cyberspace ("Cyberpunk Neon"). Schwarze Hintergründe mit leuchtenden Linien wurden zum Standard für "High Tech" Darstellungen, von Winamp-Skins bis zu modernen Hacker-Tools.
+                    </p>
+                </div>
+                <div class="glass-panel p-4 rounded">
+                    <h4 class="font-bold text-[#d33682] mb-2">Audio: Wendy Carlos</h4>
+                    <p class="text-xs leading-relaxed">
+                        Der Soundtrack kombiniert analoge Moog-Synthesizer mit dem London Philharmonic Orchestra. Diese Symbiose aus Analog (Mensch) und Digital (Maschine) spiegelt das Filmthema perfekt wider und ebnete den Weg für Synthwave.
+                    </p>
+                </div>
+            </div>
+
+            <div class="chart-container bg-white p-4 rounded shadow-sm border border-[#eee8d5]">
+                <canvas id="chart-culture"></canvas>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="mt-12 border-t border-[#93a1a1] pt-6 pb-2 text-center text-xs text-[#93a1a1] mono">
+            <p>GENERATED BY CANVAS_WEBAPP_MODULE // SOURCE: TRON_ARCHIVE</p>
+            <p class="mt-1">GLOSSARY: [Derezzed: De-Resolution/Deletion] [Cycles: Zeiteinheit] [Identity Disc: Speicherabbild]</p>
+        </footer>
+
+    </main>
+
+    <script>
+        // --- State Management ---
+        const state = {
+            currentTab: 'dashboard',
+            facts: [
+                { title: "Digitalisierung von Materie", score: 10, desc: "Reine Fiktion. Ein Laser, der Materie in Daten umwandelt und im RAM speichert, verletzt physikalische Gesetze massiv.", type: "FICTION" },
+                { title: "I/O Tower Kommunikation", score: 90, desc: "Hacker-Realismus. Die I/O Tower repräsentieren System-Ports. Die Kommunikation zwischen Programmen und Usern über Terminals ist korrekt dargestellt.", type: "REALISM" },
+                { title: "Disk Identity", score: 85, desc: "Die Diskusse sind Speicherabbilder. Wenn ein Programm den Diskus verliert, verliert es seine Identität/Code. Metaphorisch sehr akkurat.", type: "METAPHOR" },
+                { title: "Solar Sailer", score: 40, desc: "Visuell beeindruckend, aber technisch fragwürdig. Simulation von Datentransfer über optische Leitungen (Lichtleiter), aber stark romantisiert.", type: "FICTION" }
+            ]
+        };
+
+        // --- Navigation Logic ---
+        function switchTab(tabId) {
+            // Update UI State
+            document.querySelectorAll('.view-section').forEach(el => el.classList.add('hidden'));
+            document.getElementById(`view-${tabId}`).classList.remove('hidden');
+            
+            // Update Nav Styling
+            document.querySelectorAll('nav button').forEach(btn => {
+                btn.classList.remove('active-nav', 'bg-[#d5d0c0]', 'text-[#073642]');
+                btn.classList.add('text-[#586e75]');
+            });
+            const activeBtn = document.getElementById(`nav-${tabId}`);
+            activeBtn.classList.add('active-nav');
+            activeBtn.classList.remove('text-[#586e75]');
+
+            // Update Header Context
+            updateHeader(tabId);
+
+            // Trigger Charts if needed (resize handling)
+            state.currentTab = tabId;
+        }
+
+        function updateHeader(tabId) {
+            const titles = {
+                'dashboard': 'Systemübersicht',
+                'genesis': 'Genesis & Technische Historie',
+                'mcp': 'Das Master Control Program',
+                'philosophy': 'Philosophie: User vs. Programm',
+                'debugger': 'Debugger: Fact Check',
+                'impact': 'Kultureller Impact'
+            };
+            const descs = {
+                'dashboard': 'Willkommen zur forensischen Analyse von Artefakt "TRON". Executive Summary und Key Metrics.',
+                'genesis': 'Analyse der Cray-1 Ära, MAGI Rendering und der hybriden Backlighting-Technik.',
+                'mcp': 'Das MCP als Archetyp für proprietäre Software-Monopole und Walled Gardens.',
+                'philosophy': 'Theologische Implikationen der User-Programm-Beziehung und Hacker-Ethik.',
+                'debugger': 'Validierung technischer Konzepte. Was ist Science, was ist Fiction?',
+                'impact': 'Der visuelle und akustische Nachhall in der Cyberkultur und Demoscene.'
+            };
+            document.getElementById('section-title').textContent = titles[tabId];
+            document.getElementById('section-desc').textContent = descs[tabId];
+        }
+
+        // --- Visualization Logic ---
+        window.onload = function() {
+            renderGenesisChart();
+            renderMcpChart();
+            renderImpactChart();
+            renderFactCards();
+            startCycleCounter();
+        };
+
+        function startCycleCounter() {
+            let cycles = 0;
+            setInterval(() => {
+                cycles += Math.floor(Math.random() * 10) + 1;
+                document.getElementById('cycle-counter').innerText = cycles;
+            }, 1000);
+        }
+
+        // 1. Genesis Chart (Logarithmic)
+        function renderGenesisChart() {
+            const ctx = document.getElementById('chart-cray').getContext('2d');
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Cray-1 (1976)', 'iPhone 15 Pro', 'RTX 4090'],
+                    datasets: [{
+                        label: 'Floating Point Operations per Second (FLOPS)',
+                        data: [160000000, 2000000000000, 83000000000000], // 160 Megaflops, 2 Teraflops, 83 Teraflops
+                        backgroundColor: ['#b58900', '#2aa198', '#d33682'],
+                        borderRadius: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            type: 'logarithmic',
+                            title: { display: true, text: 'FLOPS (Log Scale)' },
+                            grid: { color: '#eee8d5' }
+                        },
+                        x: { grid: { display: false } }
+                    },
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    let label = context.dataset.label || '';
+                                    if (label) {
+                                        label += ': ';
+                                    }
+                                    if (context.parsed.y !== null) {
+                                        // Simple formatter for big numbers
+                                        const val = context.parsed.y;
+                                        if(val > 1000000000000) return "Multi-Teraflops";
+                                        if(val > 1000000) return "160 Megaflops";
+                                    }
+                                    return label;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // 2. MCP Radar Chart
+        function renderMcpChart() {
+            const ctx = document.getElementById('chart-mcp').getContext('2d');
+            new Chart(ctx, {
+                type: 'radar',
+                data: {
+                    labels: ['Überwachung', 'Markt-Dominanz', 'Nutzer-Einsperrung', 'Aggression', 'Innovation'],
+                    datasets: [{
+                        label: 'MCP (1982)',
+                        data: [90, 85, 100, 95, 20],
+                        fill: true,
+                        backgroundColor: 'rgba(220, 50, 47, 0.2)', // Red
+                        borderColor: '#dc322f',
+                        pointBackgroundColor: '#dc322f'
+                    }, {
+                        label: 'Modern Tech Giants',
+                        data: [95, 90, 80, 40, 90],
+                        fill: true,
+                        backgroundColor: 'rgba(42, 161, 152, 0.2)', // Cyan
+                        borderColor: '#2aa198',
+                        pointBackgroundColor: '#2aa198'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        r: {
+                            angleLines: { color: '#93a1a1' },
+                            grid: { color: '#eee8d5' },
+                            pointLabels: { font: { size: 12, family: 'Inter' } },
+                            suggestedMin: 0,
+                            suggestedMax: 100
+                        }
+                    }
+                }
+            });
+        }
+
+        // 3. Impact Line Chart
+        function renderImpactChart() {
+            const ctx = document.getElementById('chart-culture').getContext('2d');
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['1982', '1990', '2000', '2010', '2020', '2025'],
+                    datasets: [{
+                        label: 'Kulturelle Relevanz (Index)',
+                        data: [40, 60, 50, 90, 85, 95], // 1982 (Flop), 1990 (Cult), 2010 (Legacy release), 2025 (AI Ethics relevance)
+                        borderColor: '#d33682', // Magenta
+                        backgroundColor: 'rgba(211, 54, 130, 0.1)',
+                        fill: true,
+                        tension: 0.4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: { display: false },
+                        x: { grid: { color: '#eee8d5' } }
+                    },
+                    plugins: {
+                        tooltip: {
+                            callbacks: {
+                                afterBody: function(context) {
+                                    const year = context[0].label;
+                                    if(year === '1982') return "Kinostart (Mäßiger Erfolg)";
+                                    if(year === '1990') return "Wachstum durch VHS/Demoscene";
+                                    if(year === '2010') return "Tron: Legacy Release";
+                                    if(year === '2025') return "Hohe Relevanz durch KI-Debatten";
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // --- Interaction Logic ---
+        
+        function renderFactCards() {
+            const container = document.getElementById('fact-cards-container');
+            container.innerHTML = '';
+            
+            state.facts.forEach(fact => {
+                const colorClass = fact.type === 'REALISM' ? 'border-[#859900] text-[#859900]' : (fact.type === 'FICTION' ? 'border-[#dc322f] text-[#dc322f]' : 'border-[#b58900] text-[#b58900]');
+                const bgClass = fact.type === 'REALISM' ? 'bg-[#859900]' : (fact.type === 'FICTION' ? 'bg-[#dc322f]' : 'bg-[#b58900]');
+
+                const html = `
+                <div class="border-l-4 ${colorClass} bg-white p-4 shadow-sm hover:shadow-md transition">
+                    <div class="flex justify-between items-center mb-2">
+                        <h4 class="font-bold text-[#073642]">${fact.title}</h4>
+                        <span class="text-xs text-white px-2 py-1 rounded ${bgClass}">${fact.type}</span>
+                    </div>
+                    <div class="w-full bg-[#eee8d5] h-2 rounded-full mb-2 overflow-hidden">
+                        <div class="${bgClass}" style="width: ${fact.score}%; height: 100%"></div>
+                    </div>
+                    <p class="text-xs text-[#586e75]">${fact.desc}</p>
+                </div>`;
+                container.innerHTML += html;
+            });
+        }
+
+        function updateMcpDetail(type) {
+            const box = document.getElementById('mcp-detail-box');
+            box.classList.remove('hidden');
+            let content = "";
+            
+            if(type === 'Monopol') {
+                content = "<strong>Monopolismus:</strong> Das MCP absorbiert Schachprogramme, Buchhaltungstools und Sicherheitssoftware. Dies spiegelt das Verhalten von Plattformen wider, die Features von Konkurrenten 'einbauen', um diese obsolet zu machen.";
+            } else if(type === 'Surveillance') {
+                content = "<strong>Überwachung:</strong> 'I have a read on his identity disc.' Das MCP weiß jederzeit, wo sich Programme befinden und was sie tun. Ein Vorläufer moderner Telemetrie und Data-Harvesting.";
+            } else if(type === 'Lockin') {
+                content = "<strong>Walled Garden:</strong> Kommunikation mit der Außenwelt (den Usern) ist streng verboten und wird als Ketzerei bestraft. Nur das MCP darf mit den Usern (via Sark) kommunizieren.";
+            }
+            
+            box.innerHTML = content;
+        }
+
+        function runTerminal(ideology) {
+            const term = document.getElementById('terminal-output');
+            let msg = "";
+            let color = "text-[#839496]";
+
+            if(ideology === 'open') {
+                msg = "> EXECUTE: TRON_LEGACY.EXE\n> ACCESS GRANTED.\n> PHILOSOPHY: Free Software.\n> 'I fight for the Users.' - Code must serve the creator.";
+                color = "text-[#2aa198]";
+            } else if (ideology === 'corp') {
+                msg = "> EXECUTE: MCP_PROTOCOL_V1\n> WARNING: RESTRICTED.\n> PHILOSOPHY: Proprietary Control.\n> Efficiency requires absolute order. Eliminate variance.";
+                color = "text-[#dc322f]";
+            } else {
+                msg = "> EXECUTE: FLYNN_HACK\n> BYPASSING FIREWALL...\n> PHILOSOPHY: Hacker Ethic.\n> Information wants to be free. Improvise, Adapt, Overcome.";
+                color = "text-[#b58900]";
+            }
+
+            const p = document.createElement('p');
+            p.innerText = msg;
+            p.className = `mt-2 border-t border-[#586e75] pt-1 ${color} whitespace-pre-line`;
+            term.appendChild(p);
+            term.scrollTop = term.scrollHeight;
+        }
+
+    </script>
+</body>
+</html>

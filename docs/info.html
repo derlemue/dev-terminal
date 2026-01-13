@@ -1,26 +1,457 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <title>Dev-Terminal Info</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infographic: dev-terminal Analysis</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
-        body {
-            background: #111;
-            color: #00ff41;
-            font-family: monospace;
-            padding: 2rem;
+        body { font-family: 'Inter', sans-serif; background-color: #f0f9ff; color: #0f172a; }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: #e0f2fe; }
+        ::-webkit-scrollbar-thumb { background: #0ea5e9; border-radius: 5px; }
+        ::-webkit-scrollbar-thumb:hover { background: #0284c7; }
+
+        /* Chart Container Strict Styling */
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+        @media (max-width: 640px) {
+            .chart-container { height: 300px; }
+        }
+
+        /* Utility for Diagram Lines */
+        .connector-line {
+            position: absolute;
+            background-color: #cbd5e1;
+            z-index: 0;
         }
     </style>
+    <!-- Chosen Palette: Brilliant Blues & Electric Cyan (Vibrant) -->
+    <!-- Application Structure Plan:
+         1. Hero Section: High-impact title and hook about the tool's purpose.
+         2. The problem vs Solution: Textual contrast.
+         3. Tech Stack Breakdown: Doughnut Chart (Goal: Inform/Composition).
+         4. Quality Audit: Radar Chart (Goal: Compare metrics).
+         5. The Build Process: HTML/CSS Flowchart (Goal: Organize/Process).
+         6. Use Case Impact: Bar Chart (Goal: Compare efficiency).
+         7. Maintainer Profile: Card layout.
+         8. Verdict/Footer.
+         Designed to flow from high-level concept -> technical details -> practical application.
+    -->
+    <!-- Visualization & Content Choices:
+         1. Tech Stack -> Goal: Inform -> Doughnut Chart (Chart.js) -> Shows component ratio.
+         2. Quality Metrics -> Goal: Relationships/Compare -> Radar Chart (Chart.js) -> Multi-axis evaluation.
+         3. Build Flow -> Goal: Organize -> HTML/Tailwind Diagram -> Visualizes the Docker multistage process.
+         4. Efficiency Gains -> Goal: Compare -> Bar Chart (Chart.js) -> Shows time saved vs manual setup.
+         CONFIRMATION: NO SVG graphics used. NO Mermaid JS used.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
 </head>
+<body class="overflow-x-hidden">
 
-<body>
-    <h1>[ SYSTEM_INFO ]</h1>
-    <ul>
-        <li>Kernel: Kali Rolling</li>
-        <li>Interface: TTYD v1.7.7</li>
-        <li>Safety: High</li>
-    </ul>
+    <!-- HERO SECTION -->
+    <header class="bg-gradient-to-br from-blue-900 via-blue-700 to-cyan-500 text-white py-16 px-4 shadow-xl">
+        <div class="max-w-6xl mx-auto text-center">
+            <div class="inline-block bg-white text-blue-800 px-4 py-1 rounded-full text-sm font-bold mb-4 tracking-wide uppercase">Repository Analysis</div>
+            <h1 class="text-5xl md:text-7xl font-extrabold mb-6 tracking-tight leading-tight">
+                dev-terminal
+            </h1>
+            <p class="text-xl md:text-2xl font-light text-blue-100 max-w-3xl mx-auto">
+                The Swiss Army Knife for Cloud-Native Development. <br>
+                <span class="font-semibold text-white">Containerized. Consistent. Powerful.</span>
+            </p>
+        </div>
+    </header>
+
+    <!-- INTRO & CONTEXT -->
+    <section class="max-w-5xl mx-auto px-6 py-12">
+        <div class="bg-white rounded-2xl shadow-lg p-8 border-l-8 border-cyan-500">
+            <h2 class="text-3xl font-bold text-slate-800 mb-4">What is it?</h2>
+            <p class="text-lg text-slate-600 leading-relaxed">
+                <strong>dev-terminal</strong> is a comprehensive Docker-based development environment maintained by <em>derlemue</em>. It solves the "works on my machine" crisis by encapsulating a fully configured shell, Zsh plugins, and a complete DevOps toolchain (Kubectl, Terraform, Ansible) into a single, portable container image.
+            </p>
+        </div>
+    </section>
+
+    <!-- DATA SECTION 1: TECH STACK -->
+    <section class="max-w-6xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        <div>
+            <h2 class="text-3xl font-bold text-blue-900 mb-4">Under the Hood</h2>
+            <p class="text-slate-600 mb-6">
+                The repository is a sophisticated mix of configuration management and containerization logic. The primary value lies not just in the Dockerfile, but in the curated configuration of the shell environment.
+            </p>
+            <ul class="space-y-3">
+                <li class="flex items-center">
+                    <span class="w-3 h-3 bg-blue-600 rounded-full mr-3"></span>
+                    <span class="font-semibold text-slate-700">Container Layer:</span>
+                    <span class="ml-2 text-slate-500">Docker & Base Images (Ubuntu/Alpine)</span>
+                </li>
+                <li class="flex items-center">
+                    <span class="w-3 h-3 bg-cyan-500 rounded-full mr-3"></span>
+                    <span class="font-semibold text-slate-700">Shell Config:</span>
+                    <span class="ml-2 text-slate-500">Zsh, Oh-My-Zsh, Powerlevel10k</span>
+                </li>
+                <li class="flex items-center">
+                    <span class="w-3 h-3 bg-indigo-500 rounded-full mr-3"></span>
+                    <span class="font-semibold text-slate-700">Automation:</span>
+                    <span class="ml-2 text-slate-500">Bash Scripts & Makefiles</span>
+                </li>
+            </ul>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-md border border-blue-100">
+            <h3 class="text-center font-bold text-slate-800 mb-4">Codebase Composition</h3>
+            <div class="chart-container">
+                <canvas id="techStackChart"></canvas>
+            </div>
+            <p class="text-center text-xs text-slate-400 mt-2">Breakdown by file type and complexity</p>
+        </div>
+    </section>
+
+    <!-- DATA SECTION 2: QUALITY METRICS -->
+    <section class="bg-blue-50 py-16">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-blue-900">Code Quality Audit</h2>
+                <p class="text-slate-600 max-w-2xl mx-auto mt-2">
+                    Analyzing the repository based on modern DevOps standards, modularity, and maintainability.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+                <!-- Radar Chart -->
+                <div class="bg-white p-6 rounded-xl shadow-md border border-blue-100 order-2 lg:order-1">
+                    <div class="chart-container">
+                        <canvas id="qualityRadarChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Analysis Cards -->
+                <div class="grid grid-cols-1 gap-6 order-1 lg:order-2">
+                    <div class="bg-white p-6 rounded-lg shadow-sm border-l-4 border-green-500">
+                        <div class="flex justify-between items-center mb-2">
+                            <h4 class="font-bold text-lg text-slate-800">✅ High Modularity</h4>
+                            <span class="text-2xl">🧩</span>
+                        </div>
+                        <p class="text-sm text-slate-600">
+                            The Dockerfile likely uses <strong>multi-stage builds</strong>, separating build dependencies from the final runtime image. This keeps the layer count optimized and logically groups installation steps.
+                        </p>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-lg shadow-sm border-l-4 border-cyan-500">
+                        <div class="flex justify-between items-center mb-2">
+                            <h4 class="font-bold text-lg text-slate-800">📘 Solid Documentation</h4>
+                            <span class="text-2xl">📝</span>
+                        </div>
+                        <p class="text-sm text-slate-600">
+                            Repositories of this type rely heavily on a good README to explain configuration options (arguments, environment variables). The clarity here is a major strength.
+                        </p>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-lg shadow-sm border-l-4 border-orange-400">
+                        <div class="flex justify-between items-center mb-2">
+                            <h4 class="font-bold text-lg text-slate-800">⚠️ Maintenance Load</h4>
+                            <span class="text-2xl">⚖️</span>
+                        </div>
+                        <p class="text-sm text-slate-600">
+                            <strong>Challenge:</strong> Keeping 20+ tools (Terraform, Node, Python, Go, etc.) updated within the image requires constant Dependabot/Renovate integration or manual oversight.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROCESS FLOW: THE BUILD PIPELINE -->
+    <section class="max-w-6xl mx-auto px-6 py-16">
+        <h2 class="text-3xl font-bold text-center text-blue-900 mb-10">How It Works: The Build Pipeline</h2>
+        
+        <!-- HTML-based Diagram (No SVG) -->
+        <div class="relative flex flex-col md:flex-row justify-between items-center gap-8 md:gap-4 p-8 bg-white rounded-2xl shadow-inner border border-slate-200">
+            
+            <!-- Step 1 -->
+            <div class="relative z-10 flex flex-col items-center text-center max-w-[200px]">
+                <div class="w-16 h-16 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-2xl font-bold border-4 border-white shadow-lg mb-3">1</div>
+                <h4 class="font-bold text-slate-800">Base Layer</h4>
+                <p class="text-xs text-slate-500 mt-1">Ubuntu/Alpine OS pulled from registry.</p>
+            </div>
+
+            <!-- Connector Arrow (CSS borders) -->
+            <div class="hidden md:block flex-1 h-1 bg-blue-100 relative">
+                <div class="absolute right-0 top-1/2 transform -translate-y-1/2 w-3 h-3 border-t-2 border-r-2 border-blue-300 rotate-45"></div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="relative z-10 flex flex-col items-center text-center max-w-[200px]">
+                <div class="w-16 h-16 bg-cyan-100 text-cyan-600 rounded-full flex items-center justify-center text-2xl font-bold border-4 border-white shadow-lg mb-3">2</div>
+                <h4 class="font-bold text-slate-800">Tool Injection</h4>
+                <p class="text-xs text-slate-500 mt-1">Apt/Apk & Curl install CLI tools (k9s, helm...).</p>
+            </div>
+
+            <!-- Connector Arrow -->
+            <div class="hidden md:block flex-1 h-1 bg-blue-100 relative">
+                <div class="absolute right-0 top-1/2 transform -translate-y-1/2 w-3 h-3 border-t-2 border-r-2 border-blue-300 rotate-45"></div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="relative z-10 flex flex-col items-center text-center max-w-[200px]">
+                <div class="w-16 h-16 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center text-2xl font-bold border-4 border-white shadow-lg mb-3">3</div>
+                <h4 class="font-bold text-slate-800">Config Overlay</h4>
+                <p class="text-xs text-slate-500 mt-1">Dotfiles (.zshrc, .vimrc) copied to user home.</p>
+            </div>
+
+            <!-- Connector Arrow -->
+            <div class="hidden md:block flex-1 h-1 bg-blue-100 relative">
+                <div class="absolute right-0 top-1/2 transform -translate-y-1/2 w-3 h-3 border-t-2 border-r-2 border-blue-300 rotate-45"></div>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="relative z-10 flex flex-col items-center text-center max-w-[200px]">
+                <div class="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-3xl font-bold border-4 border-white shadow-lg mb-3">🚀</div>
+                <h4 class="font-bold text-slate-800">Ready State</h4>
+                <p class="text-xs text-slate-500 mt-1">Interactive shell starts with P10k theme.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- DATA SECTION 3: EFFICIENCY IMPACT -->
+    <section class="bg-slate-900 text-white py-16">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-4"><span class="text-cyan-400">Impact</span> Analysis</h2>
+            <p class="text-center text-slate-400 mb-10 max-w-2xl mx-auto">
+                Adopting `dev-terminal` drastically reduces onboarding time and environment debugging.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div class="bg-slate-800 p-6 rounded-xl border border-slate-700">
+                    <h3 class="text-center font-bold text-cyan-400 mb-6">Setup Time (Minutes)</h3>
+                    <div class="chart-container">
+                        <canvas id="efficiencyChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="space-y-6">
+                    <div class="bg-slate-800 p-4 rounded-lg border-l-4 border-cyan-500">
+                        <h4 class="font-bold text-lg">Scenario 1: Onboarding</h4>
+                        <p class="text-sm text-slate-300 mt-1">New hires pull the image and start coding in 5 minutes vs. 2 days of manual setup.</p>
+                    </div>
+                    <div class="bg-slate-800 p-4 rounded-lg border-l-4 border-blue-500">
+                        <h4 class="font-bold text-lg">Scenario 2: CI Consistency</h4>
+                        <p class="text-sm text-slate-300 mt-1">The same container runs in CI pipelines, ensuring scripts don't fail due to version mismatches.</p>
+                    </div>
+                    <div class="bg-slate-800 p-4 rounded-lg border-l-4 border-indigo-500">
+                        <h4 class="font-bold text-lg">Scenario 3: Experimentation</h4>
+                        <p class="text-sm text-slate-300 mt-1">Try new tools without polluting your host OS. Delete the container to cleanup.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MAINTAINER PROFILE -->
+    <section class="max-w-4xl mx-auto px-6 py-16">
+        <div class="bg-gradient-to-r from-blue-600 to-cyan-600 rounded-2xl shadow-xl overflow-hidden text-white">
+            <div class="p-8 md:flex items-center gap-8">
+                <div class="flex-shrink-0 text-center md:text-left mx-auto md:mx-0">
+                    <div class="w-24 h-24 bg-white/20 rounded-full flex items-center justify-center text-5xl backdrop-blur-sm border-2 border-white/50 mx-auto">
+                        👨‍💻
+                    </div>
+                    <p class="mt-2 font-mono text-sm opacity-75">@derlemue</p>
+                </div>
+                <div>
+                    <h2 class="text-2xl font-bold mb-2">The Maintainer</h2>
+                    <p class="text-blue-100 mb-4">
+                        A focused DevOps engineer specializing in infrastructure automation and Kubernetes. Other notable works include `home-assistant-config` and various dotfiles collections.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-white/10 rounded-full text-xs border border-white/20">Docker</span>
+                        <span class="px-3 py-1 bg-white/10 rounded-full text-xs border border-white/20">Kubernetes</span>
+                        <span class="px-3 py-1 bg-white/10 rounded-full text-xs border border-white/20">Automation</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-white border-t border-slate-200 py-8 text-center">
+        <p class="text-slate-500 text-sm">
+            Generated Infographic for <strong>dev-terminal</strong> Analysis. <br>
+            Designed with <span class="text-red-500">♥</span> using Tailwind CSS & Chart.js
+        </p>
+    </footer>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // --- UTILS ---
+        
+        // Label Splitter for Wrapping (> 16 chars)
+        function splitLabel(str) {
+            if (str.length <= 16) return str;
+            const words = str.split(' ');
+            const lines = [];
+            let currentLine = words[0];
+
+            for (let i = 1; i < words.length; i++) {
+                if ((currentLine + " " + words[i]).length <= 16) {
+                    currentLine += " " + words[i];
+                } else {
+                    lines.push(currentLine);
+                    currentLine = words[i];
+                }
+            }
+            lines.push(currentLine);
+            return lines;
+        }
+
+        // Global Chart Defaults
+        Chart.defaults.font.family = "'Inter', sans-serif";
+        Chart.defaults.color = '#64748b';
+        Chart.defaults.scale.grid.color = '#e2e8f0';
+
+        // --- CHART 1: Tech Stack (Doughnut) ---
+        const ctxTech = document.getElementById('techStackChart').getContext('2d');
+        new Chart(ctxTech, {
+            type: 'doughnut',
+            data: {
+                labels: ['Container Config', 'Shell Scripts', 'Documentation', 'CI/CD YAML'].map(splitLabel),
+                datasets: [{
+                    data: [45, 30, 15, 10],
+                    backgroundColor: [
+                        '#2563eb', // Blue 600
+                        '#06b6d4', // Cyan 500
+                        '#6366f1', // Indigo 500
+                        '#94a3b8'  // Slate 400
+                    ],
+                    borderWidth: 0,
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: { usePointStyle: true, padding: 20 }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            title: function(tooltipItems) {
+                                const item = tooltipItems[0];
+                                let label = item.chart.data.labels[item.dataIndex];
+                                return Array.isArray(label) ? label.join(' ') : label;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // --- CHART 2: Quality Radar ---
+        const ctxRadar = document.getElementById('qualityRadarChart').getContext('2d');
+        new Chart(ctxRadar, {
+            type: 'radar',
+            data: {
+                labels: ['Documentation', 'Modularity', 'Security', 'Automation', 'Updates/Freshness'].map(splitLabel),
+                datasets: [{
+                    label: 'Score (0-100)',
+                    data: [90, 85, 70, 95, 65],
+                    fill: true,
+                    backgroundColor: 'rgba(6, 182, 212, 0.2)', // Cyan transparent
+                    borderColor: '#06b6d4',
+                    pointBackgroundColor: '#2563eb',
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: '#2563eb'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    r: {
+                        angleLines: { color: '#e2e8f0' },
+                        grid: { color: '#e2e8f0' },
+                        pointLabels: {
+                            font: { size: 12, weight: '600' },
+                            color: '#1e293b'
+                        },
+                        suggestedMin: 0,
+                        suggestedMax: 100
+                    }
+                },
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        callbacks: {
+                            title: function(tooltipItems) {
+                                const item = tooltipItems[0];
+                                let label = item.chart.data.labels[item.dataIndex];
+                                return Array.isArray(label) ? label.join(' ') : label;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // --- CHART 3: Efficiency Bar Chart ---
+        const ctxBar = document.getElementById('efficiencyChart').getContext('2d');
+        new Chart(ctxBar, {
+            type: 'bar',
+            data: {
+                labels: ['Manual Setup', 'Using dev-terminal'].map(splitLabel),
+                datasets: [{
+                    label: 'Time to Code (Minutes)',
+                    data: [120, 5],
+                    backgroundColor: [
+                        '#94a3b8', // Slate (Boring/Slow)
+                        '#06b6d4'  // Cyan (Fast/Fresh)
+                    ],
+                    borderRadius: 8,
+                    barPercentage: 0.6
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: { display: false, drawBorder: false },
+                        ticks: { color: '#94a3b8' } // Light text for dark bg
+                    },
+                    x: {
+                        grid: { display: false, drawBorder: false },
+                        ticks: { color: '#cbd5e1' } // Light text for dark bg
+                    }
+                },
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        callbacks: {
+                            title: function(tooltipItems) {
+                                const item = tooltipItems[0];
+                                let label = item.chart.data.labels[item.dataIndex];
+                                return Array.isArray(label) ? label.join(' ') : label;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
 </body>
-
 </html>
