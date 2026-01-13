@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.13] - 2026-01-13
+### 🧹 [ CHORE // CLEANUP ]
+- **[ ASSET_PURGE ]**: Removed redundant `report-2.html` and obsolete `player.html` (Audio).
+
 ## [2.0.12] - 2026-01-13
 ### 🐛 [ PATCH // STABILITY ]
 - **[ BOOT_LOOP_FIX ]**: Forced blind `luksClose` in `entrypoint.sh` to handle stale kernel mappings correctly when `/dev/mapper` is desynchronized.
