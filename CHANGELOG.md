@@ -16,6 +16,7 @@ All notable changes to this project will be documented in this file.
 - **Build Failure:** Resolves missing `inline.js` issue by refactoring build to use `inline.html` from `ttyd` source.
 - **TypeScript Error:** Patched `index.tsx` in `ttyd` source (v1.7.7) to resolve build-time TypeScript type mismatch (`RefCallback` void return).
 - **Sed Command:** Corrected malformed `sed` command in `Dockerfile`.
+- **MOTD Persistence:** Refactored `welcome.sh` to execute the Message of the Day (neofetch) *inside* the tmux session, ensuring it remains visible after session start.
 
 ### 🔧 Changed
 - **Base Image:** Switched to building `ttyd` from source (tag 1.7.7) ensures stability and allows custom patching.

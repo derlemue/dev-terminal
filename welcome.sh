@@ -2,7 +2,9 @@
 export TERM=xterm-256color
 export LANG=C.UTF-8
 
-start_session() {
+
+# Function to display MOTD
+print_motd() {
     clear
     CYAN='\033[0;36m'
     GREEN='\033[0;32m'
@@ -23,9 +25,18 @@ start_session() {
     sleep 0.5
 }
 
+# If called with argument "motd", just print and exit
+if [ "$1" = "motd" ]; then
+    print_motd
+    exit 0
+fi
+
+# Main Loop
 while true; do
-    start_session
-    tmux -u new-session -A -s main zsh
+    # Launch tmux and run the welcome script inside it to show MOTD
+    # We use 'exec zsh' to keep the shell open after MOTD
+    tmux -u new-session -A -s main "zsh -c '/usr/local/bin/welcome.sh motd; exec zsh'"
+    
     echo "Session ended. Respawning in 2 seconds..."
     sleep 2
 done
