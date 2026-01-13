@@ -1,20 +1,43 @@
 <style>
     html,
     body {
+        height: 100%;
+        margin: 0;
+        overflow: hidden;
         background: #0d1117 url('https://raw.githubusercontent.com/derlemue/assets/refs/heads/main/avatars/lemueIO/flyer/lemueIO-flyer-4.png') no-repeat center center fixed !important;
         background-size: cover !important;
         font-family: monospace;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
     }
 
+    /* Target the TTYD container. In app.tsx it is id="terminal-container" */
     #terminal-container {
-        /* TTYD might not use this ID, but we keep it just in case we can target the terminal wrapper */
-        /* If ttyd mounts to body, we might need to target .xterm-viewport */
+        width: 90vw !important;
+        height: 90vh !important;
+        background: rgba(0, 0, 0, 0.75) !important;
+        backdrop-filter: blur(10px) !important;
+        -webkit-backdrop-filter: blur(10px) !important;
+        border: 1px solid rgba(255, 255, 255, 0.15) !important;
+        border-radius: 8px !important;
+        padding: 15px !important;
+        box-shadow: 0 0 50px rgba(0, 0, 0, 0.5) !important;
+        position: relative !important;
+        z-index: 1 !important;
+        /* Ensure it behaves as a flex item or block */
     }
 
-    /* Override TTYD background if needed */
+    /* TTYD specific overrides to ensure transparency */
     .xterm-viewport,
-    .terminal {
+    .terminal,
+    .xterm-screen {
         background-color: transparent !important;
+    }
+
+    /* Ensure the xterm canvas fits */
+    .terminal.xterm {
+        height: 100%;
     }
 
     #login-overlay {

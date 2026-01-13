@@ -9,7 +9,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get install -y \
     build-essential cmake git libjson-c-dev libwebsockets-dev zlib1g-dev libssl-dev pkg-config \
     zsh zsh-syntax-highlighting zsh-autosuggestions kali-defaults tmux curl vim procps iproute2 ca-certificates openssh-client \
-    nodejs npm \
+    nodejs npm htop \
     && rm -rf /var/lib/apt/lists/*
 
 # 2. Build ttyd from source
