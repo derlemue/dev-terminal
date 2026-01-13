@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.30] - 2026-01-14
+### 🎨 [ PATCH // LAYER_SEPARATION ]
+- **[ CONTAINER ]**: Made the outer request container (`#terminal-container`) 100% transparent with minimal padding.
+- **[ TERMINAL ]**: Applied the 70% Opacity Black background directly to the `.terminal` element.
+    - This ensures the visual "glass box" is strictly the terminal itself, not the layout wrapper.
+- **[ ALIGNMENT ]**: Enforced strict flex centering.
+
 ## [2.0.29] - 2026-01-14
 ### 🎨 [ PATCH // UI_DARKEN ]
 - **[ OPACITY ]**: Increased background opacity from 50% to 70% (`0.7`) for better text legibility while maintaining transparency.

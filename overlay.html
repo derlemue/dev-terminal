@@ -24,30 +24,43 @@
         /* IE/Edge */
     }
 
-    /* Target the TTYD container. */
+    /* TTYD Container: Transparent Wrapper */
     #terminal-container {
         width: 80vw !important;
         height: 80vh !important;
-        background: rgba(0, 0, 0, 0.7) !important;
-        backdrop-filter: blur(10px) !important;
-        -webkit-backdrop-filter: blur(10px) !important;
-        position: absolute !important;
-        top: 0 !important;
-        left: 0 !important;
+        background: transparent !important;
         border: none !important;
         box-shadow: none !important;
+        padding: 0 !important;
+
+        position: relative !important;
         z-index: 1 !important;
-        overflow: hidden !important;
-        padding: 40px !important;
-        /* Visual padding for aesthetics */
+
         display: flex !important;
         align-items: center !important;
         justify-content: center !important;
     }
 
-    /* TTYD specific overrides to ensure transparency */
+    /* The Actual Terminal Box */
+    .terminal {
+        background-color: rgba(0, 0, 0, 0.7) !important;
+        backdrop-filter: blur(10px) !important;
+        -webkit-backdrop-filter: blur(10px) !important;
+
+        width: 100% !important;
+        height: 100% !important;
+
+        border: 1px solid rgba(255, 255, 255, 0.1) !important;
+        border-radius: 12px !important;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6) !important;
+
+        padding: 20px !important;
+        /* Internal spacing for text */
+        box-sizing: border-box !important;
+    }
+
+    /* Override xterm internals to be transparent so they sit on top of .terminal background */
     .xterm-viewport,
-    .terminal,
     .xterm-screen,
     .xterm-rows,
     .xterm-rows>div {
@@ -56,16 +69,11 @@
         height: 100% !important;
     }
 
-    /* Text Shadow for Readability */
+    /* Text Shadow */
     .xterm-rows {
-        text-shadow: 2px 2px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
-        font-weight: 700 !important;
-        letter-spacing: 1px;
-    }
-
-    /* Ensure the xterm canvas fits */
-    .terminal.xterm {
-        padding: 0 !important;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+        font-weight: 600 !important;
+        letter-spacing: 0.5px;
     }
 
     #login-overlay {
