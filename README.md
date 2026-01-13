@@ -12,30 +12,30 @@
 **[ SYSTEM_ROOT_ACCESS // ESTABLISHED ]**
 **[ UPLINK // SECURE_TTY_OVER_HTTPS ]**
 
-[ > INITIATE_SEQUENCE ](#-deployment_protocol) • [ > VIEW_SPECS ](#-feature_set) • [ > SYSTEM_LOGS ](CHANGELOG.md)
+[ > INITIATE_SEQUENCE ](#deployment) • [ > VIEW_SPECS ](#features) • [ > SYSTEM_LOGS ](CHANGELOG.md)
 
 </div>
 
 ---
 
-## 📟 SYSTEM_OVERVIEW
+## <a id="overview"></a> 📟 SYSTEM_OVERVIEW
 
 **The Construct is ready.**
 Lemue Dev-Terminal provides a high-fidelity, WebGL-accelerated neural interface (tty) directly into a Kali Linux kernel. Housed within a Docker containment unit, it features a glass-paneled, transparent overlay aesthetic, delivering a pure cyberpunk root shell experience.
 
-## 💾 FEATURE_SET
+## <a id="features"></a> 💾 FEATURE_SET
 
-- ** > [ SECURE_UPLINK ]**: Code-locked overlay protection. Passkey: `1337`.
-- ** > [ NEURAL_INTERFACE ]**: 80% Transparency Glassmorphism console. Floating viewport. (Updated to 80%)
-- ** > [ KERNEL_CORE ]**: Kali Linux Rolling. Pre-loaded: `git`, `vim`, `tmux`, `zsh`, `htop`, `openssh`.
-- ** > [ PERSISTENCE_DRIVE ]**: 512MB OverlayFS storage mounting `/usr`, `/root`, `/opt`. Tools survive reboot.
-- ** > [ ZERO_LATENCY ]**: WebGL acceleration via Xterm.js.
-- ** > [ SSH_ACCESS ]**: Port 22 exposed.
+- **[ SECURE_UPLINK ]**: Code-locked overlay protection. Passkey: `1337`.
+- **[ NEURAL_INTERFACE ]**: 80% Transparency Glassmorphism console. Floating viewport.
+- **[ KERNEL_CORE ]**: Kali Linux Rolling. Pre-loaded: `git`, `vim`, `tmux`, `zsh`, `htop`, `openssh`.
+- **[ PERSISTENCE_DRIVE ]**: 512MB OverlayFS storage mounting `/usr`, `/root`, `/opt`. Tools survive reboot.
+- **[ ZERO_LATENCY ]**: WebGL acceleration via Xterm.js.
+- **[ SSH_ACCESS ]**: Port 22 exposed.
 
-## 🔌 DEPLOYMENT_PROTOCOL
+## <a id="deployment"></a> 🔌 DEPLOYMENT_PROTOCOL
 
 ### [ PREREQUISITES ]
-- Docker Algorithm
+- Docker Engine & Docker Compose
 - Git Version Control
 
 ### [ EXECUTE_SEQUENCE ]
@@ -54,7 +54,7 @@ sudo docker compose up -d --build
 
 ** > ACCESS_POINT:** [`http://localhost:7681`](http://localhost:7681)
 
-## 🕹️ OPERATOR_MANUAL
+## <a id="manual"></a> 🕹️ OPERATOR_MANUAL
 
 1. Jack in to `http://localhost:7681`.
 2. Authenticate: `1337`.
