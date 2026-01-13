@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.4] - 2026-01-13
+### 🐛 [ PATCH // DOCS ]
+- **[ REMOVAL ]**: Temporarily removed Audio Log link (asset pending).
+
 ## [2.0.3] - 2026-01-13
 ### 🐛 [ PATCH // DEPENDENCIES ]
 - **[ PACKAGE_FIX ]**: Replaced `docker-compose-plugin` (missing in repo) with `docker-compose`.
