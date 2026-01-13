@@ -9,6 +9,7 @@ All notable changes to this project will be documented in this file.
 - **SSH Client:** Added `openssh-client` to the Docker image as requested.
 - **System Tools:** Added `htop` for system monitoring.
 - **Design:** Restored the premium "Glassmorphism" floating terminal design by targeting `ttyd`'s container explicitly in CSS.
+- **Layout:** Optimized margin (doubled padding) and hid scrollbars for a cleaner, immersive experience.
 - **Documentation:** Added beautiful `README.md` with badges.
 
 ### 🐛 Fixed

@@ -12,10 +12,22 @@
         justify-content: center !important;
     }
 
+    /* Hide scrollbars globally */
+    ::-webkit-scrollbar {
+        display: none;
+    }
+
+    * {
+        scrollbar-width: none;
+        /* Firefox */
+        -ms-overflow-style: none;
+        /* IE/Edge */
+    }
+
     /* Target the TTYD container. In app.tsx it is id="terminal-container" */
     #terminal-container {
-        width: 90vw !important;
-        height: 90vh !important;
+        width: 80vw !important;
+        height: 80vh !important;
         background: rgba(0, 0, 0, 0.75) !important;
         backdrop-filter: blur(10px) !important;
         -webkit-backdrop-filter: blur(10px) !important;
@@ -25,6 +37,7 @@
         box-shadow: 0 0 50px rgba(0, 0, 0, 0.5) !important;
         position: relative !important;
         z-index: 1 !important;
+        overflow: hidden !important;
         /* Ensure it behaves as a flex item or block */
     }
 
@@ -33,6 +46,8 @@
     .terminal,
     .xterm-screen {
         background-color: transparent !important;
+        overflow-y: hidden !important;
+        /* Force hide scrollbar on xterm */
     }
 
     /* Ensure the xterm canvas fits */
