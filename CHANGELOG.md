@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.29] - 2026-01-14
+### 🎨 [ PATCH // UI_DARKEN ]
+- **[ OPACITY ]**: Increased background opacity from 50% to 70% (`0.7`) for better text legibility while maintaining transparency.
+
 ## [2.0.28] - 2026-01-14
 ### 💿 [ UPDATE // STORAGE_EXPANSION ]
 - **[ PERSISTENCE ]**: Increased default volume size from 2GB to 4GB.
