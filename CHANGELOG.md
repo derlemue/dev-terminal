@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.39] - 2026-01-14
+### 📐 [ PATCH // FORCED_FIT ]
+- **[ JS_LOGIC ]**: Replaced the entire script block to guarantee `window.term.fit()` is called.
+    - Added a polling mechanism to wait for `ttyd` to assume the `.term` instance.
+    - Added strict `ResizeObserver` that calls `.fit()` directly instead of relying on event bubbling.
+- **[ CSS ]**: Re-verified `overflow-y: hidden` to kill the scrollbar offset.
+
 ## [2.0.38] - 2026-01-14
 ### 📐 [ PATCH // LAYOUT_RETRY ]
 - **[ FIX ]**: Correctly applied the `ResizeObserver` logic (previous patch failed to apply).
