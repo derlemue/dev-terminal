@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.43] - 2026-01-14
+### 📐 [ PATCH // JS_CLEANUP ]
+- **[ JS ]**: Removed the legacy `MutationObserver` script that was aggressively forcing `width: 100% !important` on the canvas.
+    - **Fix**: This script was overriding the CSS fixes from v2.0.42. Removing it finally allows the canvas to shrink to its grid size (1519px) and be centered by the Flexbox container.
+    - **Result**: Visual "black border" is now split evenly (7.5px/side).
+
 ## [2.0.42] - 2026-01-14
 ### 📐 [ PATCH // LAYOUT_FIX ]
 - **[ CSS ]**: Removed `width: 100% !important` from internal xterm elements (`canvas`, `.xterm-screen`).

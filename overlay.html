@@ -179,23 +179,7 @@
     pass.focus();
 
     // Layout Fix: Force Canvas to fill container
-    const observer = new MutationObserver(() => {
-        const canvases = document.querySelectorAll('canvas');
-        canvases.forEach(c => {
-            if (c.style.width !== '100%' || c.style.height !== '100%') {
-                c.style.setProperty('width', '100%', 'important');
-                c.style.setProperty('height', '100%', 'important');
-            }
-        });
-
-        // Also force the xterm-screen to align
-        const screens = document.querySelectorAll('.xterm-screen');
-        screens.forEach(s => {
-            s.style.setProperty('width', '100%', 'important');
-            s.style.setProperty('height', '100%', 'important');
-        });
-    });
-
-    // Start observing the document for the terminal to load
-    observer.observe(document.body, { childList: true, subtree: true, attributes: true });
+    // Layout Fix: Force Canvas to fill container -> REMOVED to allow auto-centering
+    // The previous MutationObserver was forcing width=100%, causing the black border issue.
+    // Now we rely on xterm.js internal sizing + flexbox centering.
 </script>
