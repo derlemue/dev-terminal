@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.37] - 2026-01-14
+### 📐 [ PATCH // TRUE_RESPONSIVE ]
+- **[ LOGIC ]**: Removed CSS overrides that forced canvas stretching (which caused the "empty shell space" issue).
+    - Replaced with a `ResizeObserver` that triggers a recalculation of shell columns/rows whenever the container size changes (e.g., login unlock, fullscreen toggle).
+- **[ CENTERING ]**: Flexbox centering on `.terminal` is now the primary layout driver.
+    - If the terminal font sizing doesn't perfectly divide the pixel width, the terminal block will be perfectly centered with equal borders, looking "clean" rather than "broken".
+
 ## [2.0.36] - 2026-01-14
 ### 📐 [ PATCH // LAYOUT_PERSISTENCE ]
 - **[ FLUID ]**: Added `MutationObserver` to Javascript.
