@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.42] - 2026-01-14
+### 📐 [ PATCH // LAYOUT_FIX ]
+- **[ CSS ]**: Removed `width: 100% !important` from internal xterm elements (`canvas`, `.xterm-screen`).
+    - **Fix**: Allowed the canvas to shrink to its exact grid size (e.g., 1519px) instead of stretching to fill the container (1534px).
+    - **Result**: The "empty" 15px gap is no longer all on the right. The flex container now centers the natural canvas, resulting in equal 7.5px transparent margins on both sides.
+
 ## [2.0.41] - 2026-01-14
 ### 📐 [ PATCH // ALIGNMENT ]
 - **[ CSS ]**: Added `display: flex` and `justify-content: center` to the internal `.xterm` container.
