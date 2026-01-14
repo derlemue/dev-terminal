@@ -77,9 +77,10 @@
     canvas,
     .xterm {
         background-color: transparent !important;
-        width: 100% !important;
-        height: 100% !important;
+        /* Remove forced dimensions so ResizeObserver + Flexbox handles it */
         display: block !important;
+        overflow-y: hidden !important;
+        /* Kill scrollbar gap */
     }
 
     /* Text Shadow */

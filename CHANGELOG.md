@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.38] - 2026-01-14
+### 📐 [ PATCH // LAYOUT_RETRY ]
+- **[ FIX ]**: Correctly applied the `ResizeObserver` logic (previous patch failed to apply).
+    - This ensures the shell columns resize when the window/container resizes.
+- **[ SCROLLBAR ]**: Forced `overflow-y: hidden` on xterm viewport to prevent the `15px` right-side gap calculation.
+
 ## [2.0.37] - 2026-01-14
 ### 📐 [ PATCH // TRUE_RESPONSIVE ]
 - **[ LOGIC ]**: Removed CSS overrides that forced canvas stretching (which caused the "empty shell space" issue).
