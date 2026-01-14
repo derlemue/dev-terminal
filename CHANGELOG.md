@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.35] - 2026-01-14
+### 📐 [ PATCH // STRETCH_FIX ]
+- **[ CANVAS ]**: Added `display: block !important` to `canvas` and xterm internals.
+    - Combined with `width: 100%`, this forces the terminal renderer to stretch slightly to fill any remaining pixel gap on the right edge.
+    - This ensures full-width CLI interfaces (like `htop` or `tmux` bars) seamlessly touch the container borders.
+
 ## [2.0.34] - 2026-01-14
 ### 📐 [ PATCH // LAYOUT_FIX ]
 - **[ SIZING ]**: Removed padding (`20px` -> `0`) from `.terminal` container.
