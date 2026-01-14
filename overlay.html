@@ -66,10 +66,13 @@
     }
 
     /* Override xterm internals to be transparent so they sit on top of .terminal background */
+    /* Override xterm internals to be transparent so they sit on top of .terminal background */
     .xterm-viewport,
     .xterm-screen,
     .xterm-rows,
-    .xterm-rows>div {
+    .xterm-rows>div,
+    canvas,
+    .xterm {
         background-color: transparent !important;
         width: 100% !important;
         height: 100% !important;

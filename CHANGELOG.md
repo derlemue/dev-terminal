@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.33] - 2026-01-14
+### 🎨 [ PATCH // AGGRESSIVE_FIX ]
+- **[ TRANSPARENCY ]**: Applied `background: transparent !important` to `canvas` and `.xterm` classes.
+    - This fixes the issue where the text layer (Canvas) rendered as opaque black, blocking the 70% opacity container.
+- **[ SIZING ]**: Enforced 100% width/height on all xterm internal elements.
+
 ## [2.0.32] - 2026-01-14
 ### 🎨 [ PATCH // FINAL_POLISH ]
 - **[ OVERFLOW ]**: Added `overflow: hidden` to `.terminal` to ensure content respects the 12px border radius.
