@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.36] - 2026-01-14
+### 📐 [ PATCH // LAYOUT_PERSISTENCE ]
+- **[ FLUID ]**: Added `MutationObserver` to Javascript.
+    - Actively watches for `xterm.js` trying to resize the canvas and **forces** it back to `100%` width/height.
+- **[ CENTERING ]**: Applied `flexbox` centering to the terminal container.
+    - Any remaining pixel gaps (due to integer font sizing) are now distributed evenly as a tiny border, rather than accumulating as a large gap.
+
 ## [2.0.35] - 2026-01-14
 ### 📐 [ PATCH // STRETCH_FIX ]
 - **[ CANVAS ]**: Added `display: block !important` to `canvas` and xterm internals.
