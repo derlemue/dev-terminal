@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.32] - 2026-01-14
+### 🎨 [ PATCH // FINAL_POLISH ]
+- **[ OVERFLOW ]**: Added `overflow: hidden` to `.terminal` to ensure content respects the 12px border radius.
+- **[ LAYERING_CONFIRMED ]**:
+    - **Layer 1 (Bottom)**: Wallpaper.
+    - **Layer 2 (Container)**: 100% Transparent, Absolute Centered.
+    - **Layer 3 (Terminal)**: 70% Opacity Black, Blur, Shadow, Rounded.
+    - **Layer 4 (Text)**: Transparent Canvas, White Text, Shadow.
+
 ## [2.0.31] - 2026-01-14
 ### 🎨 [ PATCH // UI_ALIGNMENT ]
 - **[ CENTERING ]**: Applied `position: absolute` with transform centering to `#terminal-container`.
