@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.34] - 2026-01-14
+### 📐 [ PATCH // LAYOUT_FIX ]
+- **[ SIZING ]**: Removed padding (`20px` -> `0`) from `.terminal` container.
+    - This allows full-width terminal applications (like `tmux` status bars) to touch the edges of the rounded window.
+    - Content now fills the entire "Glass Box".
+
 ## [2.0.33] - 2026-01-14
 ### 🎨 [ PATCH // AGGRESSIVE_FIX ]
 - **[ TRANSPARENCY ]**: Applied `background: transparent !important` to `canvas` and `.xterm` classes.
