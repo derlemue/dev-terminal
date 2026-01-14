@@ -76,11 +76,22 @@
     .xterm-screen,
     .xterm-rows,
     .xterm-rows>div,
-    canvas,
-    .xterm {
+    canvas {
         background-color: transparent !important;
         /* Remove forced dimensions so ResizeObserver + Flexbox handles it */
         display: block !important;
+        overflow-y: hidden !important;
+        /* Kill scrollbar gap */
+    }
+
+    /* Enforce centering of the grid inside the shell wrapper */
+    .xterm {
+        background-color: transparent !important;
+        width: 100% !important;
+        height: 100% !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
         overflow-y: hidden !important;
         /* Kill scrollbar gap */
     }

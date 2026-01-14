@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.41] - 2026-01-14
+### 📐 [ PATCH // ALIGNMENT ]
+- **[ CSS ]**: Added `display: flex` and `justify-content: center` to the internal `.xterm` container.
+    - **Fix**: The 15px "grid remainder" gap (caused by `ContainerWidth % CharWidth`) was previously accumulating on the right, looking like a "black border".
+    - **Result**: The content is now perfectly focused in the center of the glass pane, with the remainder distributed evenly (<8px per side).
+
 ## [2.0.40] - 2026-01-14
 ### 📐 [ PATCH // INJECTION_FIX ]
 - **[ HTML ]**: Changed injection method from `cat >>` (invalid append) to `sed` insertion (valid inside `<body>`).
