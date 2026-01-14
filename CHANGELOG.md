@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.40] - 2026-01-14
+### 📐 [ PATCH // INJECTION_FIX ]
+- **[ HTML ]**: Changed injection method from `cat >>` (invalid append) to `sed` insertion (valid inside `<body>`).
+- **[ CSS ]**: Updated selector specificity to `body #terminal-container .terminal` to forcefully override default `padding: 5px` and `width: auto`.
+    - This ensures the terminal is 80vw/80vh immediately on load.
+    - eliminates the "black gap" border caused by padding.
+
 ## [2.0.39] - 2026-01-14
 ### 📐 [ PATCH // FORCED_FIT ]
 - **[ JS_LOGIC ]**: Replaced the entire script block to guarantee `window.term.fit()` is called.

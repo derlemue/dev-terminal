@@ -48,7 +48,7 @@ COPY entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN chmod +x /usr/local/bin/welcome.sh /usr/local/bin/entrypoint.sh
 
 # 7. Inject Overlay (Visuals only, Auth handled by ttyd)
-RUN cat /opt/overlay.html >> /opt/ttyd_index.html
+RUN sed -i -e '/<\/body>/r /opt/overlay.html' -e '//N' /opt/ttyd_index.html
 
 WORKDIR /home/lemue
 

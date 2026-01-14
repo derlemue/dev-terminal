@@ -46,7 +46,8 @@
     }
 
     /* The Actual Terminal Box */
-    .terminal {
+    /* High specificity to override ttyd defaults */
+    body #terminal-container .terminal {
         background-color: rgba(0, 0, 0, 0.7) !important;
         backdrop-filter: blur(10px) !important;
         -webkit-backdrop-filter: blur(10px) !important;
@@ -59,10 +60,11 @@
         box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6) !important;
 
         padding: 0 !important;
-        /* Internal spacing for text */
+        margin: 0 !important;
+
         box-sizing: border-box !important;
         overflow: hidden !important;
-        /* Ensure content obeys border radius */
+
         display: flex !important;
         align-items: center !important;
         justify-content: center !important;
