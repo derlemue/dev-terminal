@@ -26,9 +26,9 @@
 
     /* Target the TTYD container. In app.tsx it is id="terminal-container" */
     #terminal-container {
-        width: 75vw !important;
-        height: 75vh !important;
-        background: rgba(0, 0, 0, 0.70) !important;
+        width: 65vw !important;
+        height: 65vh !important;
+        background: rgba(0, 0, 0, 0) !important;
         backdrop-filter: none !important;
         -webkit-backdrop-filter: none !important;
         border: none !important;
@@ -38,8 +38,8 @@
         z-index: 1 !important;
         overflow: hidden !important;
         /* Ensure it behaves as a flex item or block */
-        padding: 0 !important;
-        /* Remove padding to let flex center perfectly */
+        padding: 2px !important;
+        /* Add padding to terminal */
         display: flex !important;
         align-items: center !important;
         justify-content: center !important;
@@ -50,6 +50,7 @@
     .terminal,
     .xterm-screen {
         background-color: transparent !important;
+        opacity: 0.975 !important;
         overflow-y: hidden !important;
         /* Force hide scrollbar on xterm */
     }

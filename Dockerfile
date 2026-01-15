@@ -10,7 +10,7 @@ RUN apt-get update && apt-get install -y \
     build-essential cmake git libjson-c-dev libwebsockets-dev zlib1g-dev libssl-dev pkg-config \
     zsh zsh-syntax-highlighting zsh-autosuggestions kali-defaults tmux curl vim procps iproute2 ca-certificates openssh-server \
     nodejs npm htop bashtop \
-    cryptsetup sudo nano wget docker.io docker-compose-plugin traceroute nmap cmatrix \
+    cryptsetup sudo nano wget docker.io docker-compose traceroute nmap cmatrix \
     dnsutils net-tools iputils-ping \
     && rm -rf /var/lib/apt/lists/*
 
@@ -34,7 +34,7 @@ RUN useradd -m -s /bin/zsh -G sudo,docker lemue \
     && echo "lemue ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 
 # 5. SSH Configuration
-RUN mkdir /var/run/sshd \
+RUN mkdir -p /var/run/sshd \
     && sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config \
     && sed -i 's/#Port 22/Port 2222/' /etc/ssh/sshd_config
 
